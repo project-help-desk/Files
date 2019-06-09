@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+	head
+		block meta
+			meta(charset="UTF-8")
+			meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		block title
+		block css
+			link(rel="stylesheet", href="vendor/Slick/slick.css")
+			link(rel="stylesheet", href="css/style.css")
+			link(rel="stylesheet", href="fonts/fonts.css")
+	body
+		include ../includes/mixins.pug
+		block header
+			include ../includes/header.pug
+		block content
+		block scripts
+			script(src="vendor/jquery/jquery-3.2.0.min.js")
+			script(src="js/core.js")
+			script(src="vendor/Slick/slick.min.js")
+		block footer
+			include ../includes/footer.pug

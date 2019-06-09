@@ -1,0 +1,12 @@
+.slider-block
+	.slider-header
+		h3 We give 
+			span best Services
+		p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate no
+	.container
+		.slider
+			each item in slide_items
+				.slide
+					img(src=`img/${item.image}.png`, alt="")
+					h4= item.htxt
+					p= item.smtxt

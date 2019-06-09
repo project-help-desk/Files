@@ -1,0 +1,99 @@
+{
+	"nav_item": ["Freelancers", "Employers", "Services", "Portfolio", "About Us", "Team"],
+	"slide_items": [
+		{
+			"image": "sl-pic-1",
+			"htxt": "HANDICRAFT",
+			"smtxt": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates"
+		},
+		{
+			"image": "sl-pic-2",
+			"htxt": "BRANDING DESIGN",
+			"smtxt": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias"
+		},
+		{
+			"image": "sl-pic-3",
+			"htxt": "DIGITAL GRAPHIC",
+			"smtxt": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe evennet"
+		},
+		{
+			"image": "sl-pic-4",
+			"htxt": "PHOTOGRAPHY",
+			"smtxt": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores"
+		},
+		{
+			"image": "sl-pic-1",
+			"htxt": "HANDICRAFT",
+			"smtxt": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates"
+		},
+		{
+			"image": "sl-pic-2",
+			"htxt": "BRANDING DESIGN",
+			"smtxt": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias"
+		},
+		{
+			"image": "sl-pic-3",
+			"htxt": "DIGITAL GRAPHIC",
+			"smtxt": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe evennet"
+		},
+		{
+			"image": "sl-pic-4",
+			"htxt": "PHOTOGRAPHY",
+			"smtxt": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores"
+		},
+		{
+			"image": "sl-pic-1",
+			"htxt": "HANDICRAFT",
+			"smtxt": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates"
+		},
+		{
+			"image": "sl-pic-2",
+			"htxt": "BRANDING DESIGN",
+			"smtxt": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias"
+		},
+		{
+			"image": "sl-pic-3",
+			"htxt": "DIGITAL GRAPHIC",
+			"smtxt": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe evennet"
+		},
+		{
+			"image": "sl-pic-4",
+			"htxt": "PHOTOGRAPHY",
+			"smtxt": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores"
+		}
+	],
+	"wrkcards": [
+		{
+			"image": "rc-w-1",
+			"txt": "Round Icons Design"
+		},
+		{
+			"image": "rc-w-2",
+			"txt": "Stationary Design"
+		},
+		{
+			"image": "rc-w-3",
+			"txt": "Logo Design"
+		},
+		{
+			"image": "rc-w-4",
+			"txt": "Branding"
+		},
+		{
+			"image": "rc-w-5",
+			"txt": "Visiting Card Design"
+		},
+		{
+			"image": "rc-w-6",
+			"txt": "Brochure Design"
+		},
+		{
+			"image": "rc-w-7",
+			"txt": "Branding"
+		},
+		{
+			"image": "rc-w-8",
+			"txt": "Stationary Design"
+		}
+	]
+}

@@ -1,0 +1,77 @@
+header
+	background: $light_green
+	padding: 12px 0 8px
+	overflow: hidden
+	.logo
+		float: left
+		+tablet
+			width: 220px
+	ul.menu
+		float: right
+		list-style: none
+		margin: 0
+		padding: 12px 0 0 0
+		+tablet
+			display: none
+			z-index: 499
+			background: $light_green
+			width: 150px
+			height: auto
+			position: absolute
+			top: 70px
+			right: 0px
+			display: none
+			text-align: center
+			margin: 0 !important
+			padding: 10px 15px !important
+		li
+			display: inline-block
+			padding: 5px 24px
+			+tablet
+				display: block
+				padding: 5px !important
+		a
+			font:
+				family: "RalewaySemiBold", arial
+				size: 13px
+			color: #fff
+			line-height: 24px
+			text-transform: uppercase
+			text-decoration: none
+
+.menu-btn
+	width: 40px
+	height: 40px
+	float: right
+	background: transparent
+	position: relative
+	cursor: pointer
+	display: none
+	margin-right: 15px
+	+tablet
+		display: block
+
+.menu-btn
+	span
+		&::after
+			bottom: -5px
+		&::before
+			top: -5px
+
+.menu-btn
+	span
+		width: 20px
+		height: 2px
+		background: #fff
+		position: absolute
+		top: 50%
+		left: 50%
+		margin: -1px 0 0 -9p
+
+.menu-btn span::before,.menu-btn span::after
+	content: ""
+	width: 20px
+	height: 2px
+	background: #fff
+	position: absolute
+	left: 0

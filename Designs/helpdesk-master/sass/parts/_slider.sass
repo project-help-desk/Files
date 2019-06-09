@@ -1,0 +1,110 @@
+.slider-block
+	background: #f9f9f9
+	position: relative
+	padding-bottom: 118px
+	.slider-header
+		text-align: center
+		width: 772px
+		padding-top: 100px
+		padding-bottom: 68px
+		margin: 0 auto
+		+tablet
+			width: 540px
+		+phone
+			width: 320px
+		h3
+			text-transform: uppercase
+			margin: 0
+			padding-bottom: 14px
+			font:
+				size: 48px
+				family: "RalewayExtraBold", arial
+			color: #303030
+			+tablet
+				font-size: 36px
+			+phone
+				font-size: 24px
+			span
+				color: $light_green
+		p
+			line-height: 23px
+			+tablet
+				font-size: 16px
+			+phone
+				font-size: 14px
+			font:
+				family: "RalewayMedium", arial
+				size: 12px
+			color: #515151
+			margin: 0
+
+.slide
+	padding: 0 10px
+	text-align: center
+	width: 210px
+	img
+		margin: 0 auto
+	h4
+		letter-spacing: 2px
+		font:
+			family:  "RalewaySemiBold", arial
+			size: 14px
+		line-height: 24px
+		color: $light_green
+		text-transform: uppercase
+	p
+		line-height: 22px
+		font:
+			family: arial
+			size: 12px
+		color: #515151
+
+
+.slider
+	position: relative
+	padding: 0 40px
+
+
+.slick-arrow
+	position: absolute
+	top: 50%
+	width: 25px
+	height: 52px
+	font-size: 0
+	margin-top: -17px
+	z-index: 300
+	border: 0
+	background-color: transparent
+
+.slick-prev
+	left: -20px
+	background-image: url("../img/sl-arrow-prev.png")
+
+.slick-next
+	right: -6px
+	background-image: url("../img/sl-arrow-next.png")
+
+ul.slick-dots
+	left: 50%
+	bottom: -40px
+	list-style: none
+	width: 70px
+	position: absolute
+	margin: 0 0 0 -45px
+	padding: 0
+	li
+		display: inline-flex
+		justify-content: space-around
+		padding: 0 2px
+		margin: 0 auto
+		button
+			width: 17px
+			height: 17px
+			border-radius: 50%
+			background: transparent
+			font-size: 0
+			border: 3px solid $light_green
+
+li.slick-active
+	button
+		background: $light_green !important

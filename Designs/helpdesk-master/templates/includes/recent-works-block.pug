@@ -1,0 +1,10 @@
+.recent-wrk-bl
+	.container
+		h4 Recent Work Done on 
+			span JOB BOARD
+		.works-block
+			each item in wrkcards
+				.card
+					img(src=`upload/recent-works/${item.image}.jpg`, alt="")
+					a.link(href="#") Graphics
+					h5= item.txt
