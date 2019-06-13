@@ -16,9 +16,6 @@ INSERT INTO Data VALUES
     ('2014-11-13','SC Angelso',NULL,'2014-11-12 00:00:00','08:12:00','Server is down','Failure'),
     ('2014-11-14','0900-discussie platform en forum met 37 spreker in 2 dagen','09540','2014-11-12 00:00:00','08:12:00','Server is down','Failure'),
     ('2014-11-16','0900-discussie platform en forum met 37 spreker in 2 dagen','09540','2014-11-12 00:00:00','08:13:00','Back-up is lost','Functional Problem'),
-    
-// if needed change table name    
-// HISTORICAL DATA: 
 
 CREATE TABLE IF NOT EXISTS HistoricalData (
     `Incident_ID` VARCHAR(15) CHARACTER SET utf8,
