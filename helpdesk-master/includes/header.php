@@ -30,6 +30,13 @@
                 }
                 ?>
             </li>
+            <li>
+                <?php
+                if(isset($_SESSION['loggedIn'])){
+                    echo'<a href="EditAccount.php">Edit account detials</a>';
+                }
+                ?>
+            <li>
         </ul>
     </div>
 </header>
