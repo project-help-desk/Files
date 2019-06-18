@@ -1,4 +1,8 @@
-<?php session_start(); ?>   
+<?php 
+session_start();
+if(isset($_POST['submit'])){
+            $_SESSION['loggedIn'] = 0;
+}?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,12 +17,13 @@
 
     <body>
         <?php include_once 'includes/header.php'; ?>
+        
         <div class="form-div">
             <div class="form-style">
-                <form action="" method="POST">
+                <form action="login.php" method="POST">
                     <p><input type="text" name="username" placeholder="Username" size="30"></p>
                     <p><input type="text" name="password" placeholder="Password" size="30"></p>
-                    <input type="submit"name="submit" Value="Login">
+                    <input type="submit" name="submit" Value="Login">
                     <p>Not registered? <span><a href="signup.php" class="no-decor-a">Create an account</a></span></p>
                 </form>
             </div>

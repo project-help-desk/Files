@@ -1,0 +1,19 @@
+.sidemenu{
+    background-color: darkgreen;
+    height:100%;
+    width:150px;
+    list-style: none;
+    padding: 20px 0 0 10px ;
+    margin: 0;
+}
+.sidemenu a{
+    font-family: "RalewaySemiBold", arial;
+    font-size: 13px;
+    color: #fff;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-decoration: none; 
+}
+.sidemenu li{
+    padding-bottom: 45px;
+}

@@ -33,7 +33,7 @@
             <li>
                 <?php
                 if(isset($_SESSION['loggedIn'])){
-                    echo'<a href="EditAccount.php">Edit account detials</a>';
+                    echo'<a href="EditAccount.php">Edit account details</a>';
                 }
                 ?>
             <li>
