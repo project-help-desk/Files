@@ -13,7 +13,7 @@ if (isset($_SESSION['loggedIn'])) {
                 echo'
                     <ul class="sidemenu">
                     <li><a href="MyTickets.php">My tickets</a></li>
-                    <li><a href="newTicket.php">Submit ticket</a></li>
+                    <li><a href="input_ticket.php">Submit ticket</a></li>
                     </ul>
                 ';
                 break;
@@ -22,7 +22,7 @@ if (isset($_SESSION['loggedIn'])) {
                 echo'
                     <ul class="sidemenu">
                     <li><a href="Overview.php">Overview</a></li>
-                    <li><a href="newTicket.php">Submit ticket</a></li>
+                    <li><a href="input_ticket.php">Submit ticket</a></li>
                     </ul>
                 ';
                 break;

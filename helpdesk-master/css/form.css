@@ -1,15 +1,15 @@
 
 #boxing {
-
-	margin: 75px auto;
+    padding-top: 15px;
+    margin: 65px auto;
     width: 400px;
     height: 410px;
     background-color: white;
     margin-bottom: 75px;
 }
 .push {
-	padding-left: 50px;
-	width: 450px;
+    padding-left: 50px;
+    width: 450px;
 }
 input
 {
@@ -26,4 +26,10 @@ input[type=submit]
     background-color: #5bbc2e;
     cursor: pointer;
     color:white;
+}
+.error{
+    margin: 0 50px;
+    color:red;
+    font-size:11px;
+
 }
