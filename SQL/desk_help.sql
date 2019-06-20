@@ -56,15 +56,19 @@ CREATE TABLE `customer` (
 -- Структура таблицы `incident`
 --
 
-CREATE TABLE `incident` (
-  `incident_id` int(4) NOT NULL,
-  `status_id` int(4) NOT NULL,
-  `solution_id` int(4) NOT NULL,
-  `contact_id` int(4) NOT NULL,
-  `operator_id` int(4) NOT NULL,
-  `date_time` timestamp(4) NOT NULL DEFAULT CURRENT_TIMESTAMP(4) ON UPDATE CURRENT_TIMESTAMP(4),
-  `description` varchar(254) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `Incident` (
+                `Incident_ID` INT NOT NULL AUTO_INCREMENT,
+                `Client_ID` INT NOT NULL,
+                `Time_Registered` TIME NOT NULL,
+                `Date` DATE NOT NULL,
+                `Description` varchar(2000) NOT NULL,
+                `Type_ID` INT NOT NULL,
+                `Solution_ID` INT,
+                `Employee_ID` INT,
+                `Priority` INT,
+                `Status_ID` INT,
+                PRIMARY KEY (`Incident_ID`,`Time_Registered`)
+            );
 
 -- --------------------------------------------------------
 
