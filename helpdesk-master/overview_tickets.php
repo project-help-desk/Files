@@ -25,7 +25,7 @@ and open the template in the editor.
                     . "</p>";
                 }
                 
-                else {$DBName = "desk_help"; 
+                else {$DBName = "helpdesk"; 
                 if(!mysqli_select_db ($DBConnect, $DBName))
                 {
                   echo "<p>Connection to the database failed.</p>";
