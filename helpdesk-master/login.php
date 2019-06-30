@@ -1,9 +1,6 @@
-<?php 
+<?php
 session_start();
-if(isset($_POST['submit'])){
-            $_SESSION['loggedIn'] = 2;
-            echo "<script>window.open('index.php', '_self')</script>";
-}?>
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,13 +14,20 @@ if(isset($_POST['submit'])){
     </head>
 
     <body>
+
         <?php include_once 'includes/header.php'; ?>
-        
+        <?php include "includes/login.php"; ?>
         <div class="form-div">
             <div class="form-style">
                 <form action="login.php" method="POST">
+                    <span class="login-error">
+                        <?php
+                        if (isset($messageError))
+                            echo $messageError;
+                        ?>
+                    </span>
                     <p><input type="text" name="username" placeholder="Username" size="30"></p>
-                    <p><input type="text" name="password" placeholder="Password" size="30"></p>
+                    <p><input type="password" name="password" placeholder="Password" size="30"></p>
                     <input type="submit" name="submit" Value="Login">
                     <p>Not registered? <span><a href="signup.php" class="no-decor-a">Create an account</a></span></p>
                 </form>
