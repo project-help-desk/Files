@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2019 at 11:33 PM
+-- Generation Time: Jul 01, 2019 at 01:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -78,13 +78,20 @@ INSERT INTO `customer` (`Company_id`, `Company_name`, `Perm_level`) VALUES
 CREATE TABLE `incident` (
   `Incident_id` int(4) NOT NULL,
   `Status_id` int(4) NOT NULL DEFAULT '0',
-  `Solution_id` int(4) NOT NULL,
+  `Solution_id` int(4) DEFAULT NULL,
   `Contact_id` int(4) NOT NULL,
-  `Operator_id` int(4) NOT NULL,
+  `Operator_id` int(4) DEFAULT NULL,
   `Date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Description` varchar(254) NOT NULL,
   `type_id` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `incident`
+--
+
+INSERT INTO `incident` (`Incident_id`, `Status_id`, `Solution_id`, `Contact_id`, `Operator_id`, `Date_time`, `Description`, `type_id`) VALUES
+(7, 0, NULL, 7, NULL, '2019-06-30 23:01:16', 'adsdasd', 1);
 
 -- --------------------------------------------------------
 
@@ -264,7 +271,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `incident`
 --
 ALTER TABLE `incident`
-  MODIFY `Incident_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `Incident_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `incident_status`
@@ -282,7 +289,7 @@ ALTER TABLE `operator`
 -- AUTO_INCREMENT for table `solution`
 --
 ALTER TABLE `solution`
-  MODIFY `Solution_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `Solution_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

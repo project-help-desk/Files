@@ -22,34 +22,43 @@ and open the template in the editor.
                 <h1>Ticket Submission</h1>
             </div>
             <?php
-            if(isset($_SESSION['loggedIn'])){
-                if($_SESSION['loggedIn'] > 0){
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $databasename = "stenden_helpdesk";
+            $conn = mysqli_connect($servername, $username, $password, $databasename);
+            if (!$conn) {
+                die('Connection failed: ' . mysqli_connect_error());
+            }
+            if (isset($_SESSION['valid_id'])) {
+                if ($_SESSION['valid_id'] > 0) {
                     echo'<div class="error">';
                     if (isset($_POST['submit'])) {
                         if (empty($_POST['desc']) || empty($_POST['issue'])) {
-                            echo "<p>You must fill in all the required elements.</p>";
+                            echo "<p>You must fill in every input field.</p>";
                         } else {
-                            $SQLConnect = OpenDBConnection();
 
-                            $id = NewSolution($SQLConnect);
-                            $desc = htmlentities(filter_var($_POST['desc'], FILTER_SANITIZE_STRING));
-                            $type = htmlentities($_POST['issue']);
-                            $fields = array('Date_time', 'Contact_id', 'Description', 'Type_ID', 'Status_ID');
-                            $values = array(date('Y-m-d h:i:s', time()), $_SESSION['loggedIn'], $desc, $type, '1'); // TODO change NULL to CLient_ID
-                            $stmt = InsertDBStatement($SQLConnect, "Incident", $fields, $values, "sisii");
-
-                            if ($stmt != false) {
-                                $QueryResult2 = $stmt->execute();
-                                if ($QueryResult2 === false) {
-                                    DisplayDBError($SQLConnect);
+                            $desc = htmlentities($_POST['desc']);
+                            $issue = htmlentities($_POST['issue']);
+                            $contact_id = htmlentities($_SESSION['valid_id']);
+                            $date = date('Y-m-d h:i:s', time());
+//                            $fields = array('Date_time', 'Contact_id', 'Description', 'Type_ID', 'Status_ID');
+//                            $values = array(, $_SESSION['loggedIn'], $desc, $type, '1'); // TODO change NULL to CLient_ID
+//                            $stmt = InsertDBStatement($SQLConnect, "Incident", $fields, $values, "sisii");
+                            $sql = "INSERT INTO incident (Date_Time, Description, type_id,contact_id) VALUES (?,?,?,?)";
+                            if ($statement = mysqli_prepare($conn, $sql)) {
+                                //s means binding string
+                                //Binds variables to a prepared statement as parameters
+                                mysqli_stmt_bind_param($statement, "ssii", $date, $desc, $issue,$contact_id);
+                                if (mysqli_stmt_execute($statement)) {
+                                    echo "Incident inserted successfully";
                                 } else {
-                                    echo "<h1>Thank you for submitting your ticket!</h1>";
+                                    echo "error inserting incident";
+                                    die(mysqli_error($conn));
                                 }
-                                mysqli_stmt_close($stmt);
                             } else {
-                                echo "Error submitting report, please try again.";
+                                die(mysqli_error($conn));
                             }
-                            CloseDBConnection($SQLConnect);
                         }
                     }
                     echo'</div>
