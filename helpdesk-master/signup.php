@@ -1,4 +1,3 @@
-<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +20,14 @@
         <div class="form-div">
             <div class="form-style">
                 <form action="" method="POST">
+                    <span class="login-error">
+                        <?php if(isset($nameError)) 
+                            echo $nameError." ";
+
+                            if(isset($emailError))
+                             echo $emailError;
+                           ?>
+                    </span>
                     <p><input type="text" name="username" placeholder="Name" size="30" required></p>
                     <p><input type="email" name="email" placeholder="Email" size="30"required></p>
                     <p><input type="text" name="company" placeholder="Company Name" size="30" required></p>
@@ -29,6 +36,6 @@
                 </form>
             </div>
         </div>
-        <?php include_once 'includes/footer.php'; ?>
+        <?php include_once 'includes/footer.php';?>
     </body>
 </html>
