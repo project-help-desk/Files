@@ -15,7 +15,12 @@
             <li>
                 <?php
                 if(isset($_SESSION['loggedIn'])){
-                    echo'<a href="dashboard.php">Dashboard</a>';
+                    if($_SESSION['loggedIn'] ==0 || $_SESSION['loggedIn'] == 1){
+                        echo'<a href="UserTickets.php">My Tickets</a>';
+                    } else {
+                        echo'<a href="ticket_overview.php">Ticket Overview</a>';
+                    }
+                    
                 } else {
                     echo'<a href="login.php">Login</a>';
                 }

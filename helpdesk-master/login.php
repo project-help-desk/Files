@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(isset($_POST['submit'])){
-            $_SESSION['loggedIn'] = 1;
+            $_SESSION['loggedIn'] = 2;
             echo "<script>window.open('index.php', '_self')</script>";
 }?>
 <!DOCTYPE html>
