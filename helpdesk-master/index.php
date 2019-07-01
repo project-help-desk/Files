@@ -29,7 +29,7 @@
                     </div>
                     <div class="lf-fl-txt-block">
                         <h4>Find <span>the right solution </span>for your problem </h4>
-                        <p>Refrigerator hacker sign neural drone woman apophenia. Geodesic franchise bridge into augmented reality rain range-rover advert claymore mine lights disposable otaku papier-mache. Car nodality faded silent corrupted smart-A.I. chrome.  </p>
+                        <p>Stenden Helpdesk is a professional help desk with years of experience to help you with your technical problems.</p>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                         <img src="img/rh-fl-img.png" alt="">
                     </div>
                     <div class="rh-fl-txt-block">
-                        <h4>Buy a maintenace license and <span>become the part </span>of our community</h4>
-                        <p>Systemic spook face forwards katana Kowloon apophenia bomb crypto-bridge. Camera concrete BASE jump otaku film shoes bicycle tube motion voodoo god faded saturation point. Woman receding tattoo bomb military-grade tower camera realism systema boy papier-mache digital. Dissident long-chain hydrocarbons  </p>
+                        <h4>Buy a maintenace license and <span>become a part </span>of our community</h4>
+                        <p>By buying a license you get immediate access to our helpdesk where you can get professional help with your problem!</p>
                     </div>
                 </div>
             </div>
