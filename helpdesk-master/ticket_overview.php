@@ -45,7 +45,14 @@ $connection = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
 if (!$connection) {
     die("Connection to the database not succeeded " . mysqli_error($connection));
 }
-$query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution_id, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description,solution.Solution_id,solution.Description,contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name FROM incident JOIN incident_status ON incident_status.Status_id = incident.Status_id JOIN type ON type.type_id = incident.type_id JOIN solution ON solution.Solution_id = incident.Solution_id JOIN contact ON contact.Contact_id = incident.Contact_id JOIN operator ON operator.Operator_id = incident.Operator_id";
+$query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution_id, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description,solution.Solution_id,solution.Description,contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
+FROM incident 
+LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id 
+LEFT JOIN type ON type.type_id = incident.type_id 
+LEFT JOIN solution ON solution.Solution_id = incident.Solution_id 
+LEFT JOIN contact ON contact.Contact_id = incident.Contact_id 
+LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
+";
 if ($statement = mysqli_prepare($connection, $query_select)) {
     if (mysqli_stmt_execute($statement)) {
     } else {
