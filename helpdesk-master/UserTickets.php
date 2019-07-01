@@ -34,12 +34,13 @@ and open the template in the editor.
                 else {$TableName = "incident";
                 //$customerID = $_SESSION['cus_id'];
                 // $incidentId = 7;
-                $SQLstring ="SELECT incident.incident_id,incident.status_id,incident.Solution_id,incident.Contact_id,incident.Operator_id,incident.Date_time,incident.Description,incident.type_id,incident_status.Description FROM incident,incident_status WHERE incident.incident_id = incident_status.Status_id";
+                $SQLstring ="SELECT operator.firstname,customer.Company_name,type.type_description,contact.firstname_name,incident.incident_id,incident.status_id,incident.Solution_id,incident.Contact_id,incident.Operator_id,incident.Date_time,incident.Description,incident.type_id,incident_status.Description FROM incident,incident_status WHERE 
+                        incident.incident_id = incident_status.Status_id AND operator.Operator_id = customer.Company_id AND type.type_id = contact.Contact_id";
                 if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) 
                 {
                     // mysqli_stmt_bind_param($stmt, 's', $incidentId);
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $ticketNumber, $statusId, $SolId, $ContID, $OperatorId, $Date ,$Descriprion,$type);
+                    mysqli_stmt_bind_result($stmt, $ticketNumber, $statusId, $SolId, $ContID, $OperatorId, $Date ,$Descriprion,$type,$status_desc,$operatorname,$company_name,$type_Desc,$cont_name);
                     mysqli_stmt_store_result($stmt);
                 
                     if (mysqli_stmt_num_rows($stmt) == 0) 
@@ -60,16 +61,19 @@ and open the template in the editor.
                           <th>Operator ID</th>
                           <th>Date</th>
                           <th>Description</th>
+                           <th>Type</th>
                            <th>Type</th></tr>";
                         while (mysqli_stmt_fetch($stmt)) {
-                        echo "<tr><td><center>".$ticketNumber."</center></td>";
-                        echo "<td><center>".$statusId."</center></td>";
-                        echo "<td><center>".$SolId."</center></td>";
                         echo "<td><center>".$ContID."</center></td>";
                         echo "<td><center>".$OperatorId."</center></td>";
                         echo "<td><center>".$Date."</center></td>";
                         echo "<td><center>".$Descriprion."</center></td>";
-                          echo "<td><center>".$type."</center></td>";
+                        echo "<td><center>".$type."</center></td>";
+                        echo "<td><center>".$status_desc."</center></td>";
+                        echo "<td><center>".$operatorname."</center></td>";
+                        echo "<td><center>".$company_name."</center></td>";
+                        echo "<td><center>".$type_Desc."</center></td>";
+                        echo "<td><center>".$cont_name."</center></td>";
                         echo "<td><a href=edit_tickets.php?id=$ticketNumber>Edit</a></td>";
                         echo "<td><a href=delete_tickets.php?class=$ticketNumber>Delete </a></td>";
                         
