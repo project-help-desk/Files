@@ -2,13 +2,33 @@
 {
     margin: 150px auto;
     width: 440px;
-    height: 410px;
+    height: 700px;
     background-color: white;
     margin-bottom: 265px;
 
 }
+div.form-id
+{
+    width: 400px;
+     height: 80px;
+}
 
 .form-style
+{
+    width: 500px;	
+    padding: 25px 70px;
+
+}
+.form-div-login
+{
+    margin: 150px auto;
+    width: 440px;
+    height: 340px;
+    background-color: white;
+    margin-bottom: 265px;
+
+}
+.form-style-login
 {
     width: 500px;	
     padding: 25px 70px;
@@ -23,10 +43,17 @@ input
     border: 2px solid #ccc;
 
 }
-
+input[type=submit]#login-button
+{
+    width: 275px;
+    border:none;
+    background-color: #5bbc2e;
+    cursor: pointer;
+    color:white;
+}
 input[type=submit]
 {
-    width: 263px;
+    width: 305px;
     border:none;
     background-color: #5bbc2e;
     cursor: pointer;

@@ -17,8 +17,8 @@ session_start();
 
         <?php include_once 'includes/header.php'; ?>
         <?php include "includes/login.php"; ?>
-        <div class="form-div">
-            <div class="form-style">
+        <div class="form-div-login">
+            <div class="form-style-login">
                 <form action="login.php" method="POST">
                     <span class="login-error">
                         <?php
@@ -28,7 +28,7 @@ session_start();
                     </span>
                     <p><input type="text" name="username" placeholder="Username" size="30"></p>
                     <p><input type="password" name="password" placeholder="Password" size="30"></p>
-                    <input type="submit" name="submit" Value="Login">
+                    <input type="submit" name="submit" Value="Login" id="login-button">
                     <p>Not registered? <span><a href="signup.php" class="no-decor-a">Create an account</a></span></p>
                 </form>
             </div>
