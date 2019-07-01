@@ -15,10 +15,12 @@ if (isset($_POST["submit"])) {
     if (empty($user_name) || empty($password)) {
         echo "<p style=color:white;font-size:20px;>Please Enter your details</p>";
     }
-    if (strpos($user_name, '$') == FALSE) {
+    if (strpos($user_name, "$") !== 0) {
+        echo "logging in as user";
         $query = "SELECT contact.contact_id,contact.username,contact.password,customer.perm_level FROM contact JOIN customer ON contact.company_id = customer.company_id WHERE username=?";
     } else {
-        $query = "SELECT operator_id, username, password, perm_level FROM operator WHERE username=?";
+        $user_name = str_replace("$", "", $user_name);
+        $query = "SELECT operator_id, username, password, Perm_level FROM operator WHERE username=?";
     }
 
     if ($stmt = mysqli_prepare($conn, $query)) {
@@ -38,18 +40,12 @@ if (isset($_POST["submit"])) {
             while (mysqli_stmt_fetch($stmt)) {
                 if ($verify = password_verify($password, $hash_pass)) {
                     echo "Login successfull" . "<br>";
+                    $_SESSION["valid_id"] = $user_id;
+                    $_SESSION["valid_name"] = $user_name;
+                    $_SESSION["perm_level"] = $perm_level;
 
-                    if ($user_name == true && $verify == true) {
-
-                        $_SESSION["valid_id"] = $user_id;
-                        $_SESSION["valid_name"] = $user_name;
-                        $_SESSION["perm_level"] = $perm_level;
-
-                        if (isset($_SESSION["valid_id"]) && isset($_SESSION["valid_name"]) && isset($_SESSION["perm_level"])) {
-                            header("location:index.php");
-                        }
-                    } else {
-                        echo $messageError = "Not Register Yet! Click Register Link";
+                    if (isset($_SESSION["valid_id"]) && isset($_SESSION["valid_name"]) && isset($_SESSION["perm_level"])) {
+                        //header("location:index.php");
                     }
                 } else {
                     $messageError = "Incorrect user ID or password. Type the correct User Id and password. 
