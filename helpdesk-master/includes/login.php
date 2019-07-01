@@ -16,7 +16,6 @@ if (isset($_POST["submit"])) {
         echo "<p style=color:white;font-size:20px;>Please Enter your details</p>";
     }
     if (strpos($user_name, "$") !== 0) {
-        echo "logging in as user";
         $query = "SELECT contact.contact_id,contact.username,contact.password,customer.perm_level FROM contact JOIN customer ON contact.company_id = customer.company_id WHERE username=?";
     } else {
         $user_name = str_replace("$", "", $user_name);
@@ -45,7 +44,7 @@ if (isset($_POST["submit"])) {
                     $_SESSION["perm_level"] = $perm_level;
 
                     if (isset($_SESSION["valid_id"]) && isset($_SESSION["valid_name"]) && isset($_SESSION["perm_level"])) {
-                        //header("location:index.php");
+                        header("location:index.php");
                     }
                 } else {
                     $messageError = "Incorrect user ID or password. Type the correct User Id and password. 
