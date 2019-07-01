@@ -34,7 +34,8 @@ and open the template in the editor.
                 else {$TableName = "incident";
                 //$customerID = $_SESSION['cus_id'];
                 // $incidentId = 7;
-                $SQLstring ="SELECT * FROM incident";
+                $SQLstring ="SELECT * FROM incident,incident_status WHERE incident.Status_id = 
+                incident_status.Status_id";
                 if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) 
                 {
                     // mysqli_stmt_bind_param($stmt, 's', $incidentId);
