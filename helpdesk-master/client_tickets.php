@@ -70,8 +70,7 @@
                     echo "<td>" . $Operator_id . "</td>";
                     echo "<td>" . $Date_time . "</td>";
                     echo "<td>" . $Solution_id . "</td>";
-                  
-                    echo "<td><a href=>Edit</a></td>"; //needs to be directed to the edit ticket page.
+
                     echo "</tr>";
                    
                 }
