@@ -51,9 +51,10 @@
                         }
                         
                     } else {
-                        echo '<p>Is your company already registered with us?</p>
+                        
+                        echo '<div class=form-box><p>Is your company already registered with us?</p>
                     <p><input type="submit"name="newAccount" Value="Yes, our company is already registered."></p>
-                    <p><input type="submit"name="newComp" Value="No, we haven&apos;t registered yet."></p>';
+                    <p><input type="submit"name="newComp" Value="No, we haven&apos;t registered yet."></p></div>';
                     }
                     ?>
                 </form>

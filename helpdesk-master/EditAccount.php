@@ -17,14 +17,14 @@
         <div class="form-div">
             <div class="form-style">
                 <form action="" method="POST">
-                    <p><input type="text" name="username" placeholder="Username" size="40" required value="<?php echo $username ?>"></p>
-                    <p><input type="email" name="email" placeholder="Email" size="62"required value="<?php echo $email ?>"></p>
-                    <p><input type="text" name="phone" placeholder="Phone number" size="25" required value="<?php echo $phone ?>"></p>
-                    <p><input type="text" name="firstname" placeholder="First Name" size="25" required value="<?php echo $firstname ?>"></p>
-                    <p><input type="text" name="lastname" placeholder="Last Name" size="25" required value="<?php echo $lastname ?>"></p>
-                    <p><input type="text" name="licence" placeholder="Licence Code" size="10" value="<?php echo $licence ?>"></p>                    
+                    <p><input type="text" name="username" placeholder="Username" size="35" required value="<?php echo $username ?>"></p>
+                    <p><input type="email" name="email" placeholder="Email" size="35"required value="<?php echo $email ?>"></p>
+                    <p><input type="text" name="phone" placeholder="Phone number" size="35" required value="<?php echo $phone ?>"></p>
+                    <p><input type="text" name="firstname" placeholder="First Name" size="35" required value="<?php echo $firstname ?>"></p>
+                    <p><input type="text" name="lastname" placeholder="Last Name" size="35" required value="<?php echo $lastname ?>"></p>
+                    <p><input type="text" name="licence" placeholder="Licence Code" size="35" value="<?php echo $licence ?>"></p>                    
                     <p>Please enter your password to change account details</p>
-                    <p><input type="text" name="password" size="40" placeholder="password" required></p>
+                    <p><input type="text" name="password" size="35" placeholder="password" required></p>
                     <input type="submit"name="update" Value="Save">
                 </form>
             </div>

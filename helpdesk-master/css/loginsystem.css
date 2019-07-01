@@ -7,12 +7,11 @@
     margin-bottom: 265px;
 
 }
-div.form-id
+div.form-box
 {
-    width: 400px;
-     height: 80px;
+    background-color: black;
+    height:400px;
 }
-
 .form-style
 {
     width: 500px;	
@@ -69,6 +68,10 @@ input[type=submit]
 {
     color: red;
     font-size: 15px;
+}
+textarea
+{
+    resize:none;
 }
 
 

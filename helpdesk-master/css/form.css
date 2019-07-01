@@ -27,3 +27,7 @@ input[type=submit]
     cursor: pointer;
     color:white;
 }
+.push textarea
+{
+    resize:none;
+}
