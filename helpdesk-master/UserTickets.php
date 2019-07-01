@@ -25,21 +25,21 @@ and open the template in the editor.
                     . "</p>";
                 }
                 
-                else {$DBName = "helpdesk"; 
+                else {$DBName = "stenden_helpdesk"; 
                 if(!mysqli_select_db ($DBConnect, $DBName))
                 {
                   echo "<p>Connection to the database failed.</p>";
                 }
                 
-                else {$TableName = "ticket";
+                else {$TableName = "incident";
                 //$customerID = $_SESSION['cus_id'];
-                $customerID = 4;
-                $SQLstring = "SELECT * FROM ".$TableName. " WHERE CustomerID = ?";
+                // $incidentId = 7;
+                $SQLstring ="SELECT * FROM incident";
                 if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) 
                 {
-                    mysqli_stmt_bind_param($stmt, 's', $customerID);
+                    // mysqli_stmt_bind_param($stmt, 's', $incidentId);
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $ticketNumber, $cID, $oID, $iID, $dateSubmitted, $dateClosed ,$OS,$softwareVers,$ticketDescription, $status, $solution);
+                    mysqli_stmt_bind_result($stmt, $ticketNumber, $statusId, $SolId, $ContID, $OperatorId, $Date ,$Descriprion,$type);
                     mysqli_stmt_store_result($stmt);
                 
                     if (mysqli_stmt_num_rows($stmt) == 0) 
@@ -52,36 +52,29 @@ and open the template in the editor.
                        {
 
                         echo "<h1>Tickets overview:</h1>";
-                        echo "<table>";
+                        echo "<table border=1px solid black>";
                         echo "<tr><th>Ticket Id</th>
-                           <th>Date Submitted</th>
-                           <th>Operating system</th>
-                          <th>Software version</th>
-                          <th>Problem description</th>
-                          <th>Status</th>
-                          <th>Solution</th></tr>";
+                           <th>Statuse ID</th>
+                           <th>Solution ID</th>
+                          <th>Contact ID</th>
+                          <th>Operator ID</th>
+                          <th>Date</th>
+                          <th>Description</th>
+                           <th>Type</th></tr>";
                         while (mysqli_stmt_fetch($stmt)) {
                         echo "<tr><td><center>".$ticketNumber."</center></td>";
-                        echo "<td><center>".substr($dateSubmitted, 0, 10)."</center></td>";
-                        echo "<td><center>".$OS."</center></td>";
-                        echo "<td><center>".$softwareVers."</center></td>";
-                        echo "<td><center>".$ticketDescription."</center></td>";
-                        echo "<td><center>".$status."</center></td>";
-                        if($status == 'Closed' || $status == 'Resolved')
-                        {
-                            echo "<td><center>".$solution."</center></td></tr>";
-                        }
-                        else
-                        {
-                            echo "<td><center>-</center></td>";
-                        }
-                        
-                                            
+                        echo "<td><center>".$statusId."</center></td>";
+                        echo "<td><center>".$SolId."</center></td>";
+                        echo "<td><center>".$ContID."</center></td>";
+                        echo "<td><center>".$OperatorId."</center></td>";
+                        echo "<td><center>".$Date."</center></td>";
+                        echo "<td><center>".$Descriprion."</center></td>";
+                          echo "<td><center>".$type."</center></td>";
+                        echo "<td><a href=edit.php?id=$ticketNumber>Edit</a></td>";
+                        echo "<td><a href=delete.php?class=$ticketNumber>Delete </a></td>";
                         
                         }
-                        echo '</table>';
-                        
-
+                        echo '</table>'; 
                         }
                         mysqli_stmt_close($stmt);
                 }
@@ -89,7 +82,10 @@ and open the template in the editor.
                     
                     mysqli_close($DBConnect);
                 }
-                
+                 echo "";
                 ?>
     </body>
+     <?php
+        // include"delete.php";   
+     ?>
 </html>
