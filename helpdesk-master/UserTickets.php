@@ -71,8 +71,8 @@ and open the template in the editor.
                         echo "<td><center>".$Date."</center></td>";
                         echo "<td><center>".$Descriprion."</center></td>";
                           echo "<td><center>".$type."</center></td>";
-                        echo "<td><a href=edit.php?id=$ticketNumber>Edit</a></td>";
-                        echo "<td><a href=delete.php?class=$ticketNumber>Delete </a></td>";
+                        echo "<td><a href=edit_tickets.php?id=$ticketNumber>Edit</a></td>";
+                        echo "<td><a href=delete_tickets.php?class=$ticketNumber>Delete </a></td>";
                         
                         }
                         echo '</table>'; 

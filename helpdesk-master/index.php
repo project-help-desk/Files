@@ -17,7 +17,18 @@
             <div class="container">
                 <div class="banner-txt">
                     <h2>We are <span>here to </span>help you!</h2><span class="line"> </span>
-                    <p>Find the solution for your problem</p><a href="#">Get started</a>
+                    <p>Find the solution for your problem</p>
+                    <?php
+                    if(isset($_SESSION['valid_id'])){
+                        if($_SESSION['valid_id'] >1){
+                            echo '<a href="userTickets.php">Get started</a>';
+                        } else {
+                            echo '<a href="ticket_overview.php">Get started</a>';
+                        }
+                    } else {
+                        echo '<a href="signup.php">Get started</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
