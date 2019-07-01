@@ -45,7 +45,7 @@ $connection = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
 if (!$connection) {
     die("Connection to the database not succeeded " . mysqli_error($connection));
 }
-$query_select = "SELECT Incident_id, Status_id, Solution_id, Contact_id, Operator_id, Date_time, Description, type_id FROM incident";
+$query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution_id, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description,solution.Solution_id,solution.Description,contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name FROM incident JOIN incident_status ON incident_status.Status_id = incident.Status_id JOIN type ON type.type_id = incident.type_id JOIN solution ON solution.Solution_id = incident.Solution_id JOIN contact ON contact.Contact_id = incident.Contact_id JOIN operator ON operator.Operator_id = incident.Operator_id";
 if ($statement = mysqli_prepare($connection, $query_select)) {
     if (mysqli_stmt_execute($statement)) {
     } else {
@@ -55,7 +55,7 @@ if ($statement = mysqli_prepare($connection, $query_select)) {
 } else {
     die(mysqli_error($connection));
 }
-mysqli_stmt_bind_result($statement, $Incident, $Status, $Solution, $Contact, $Operator, $DateTime, $Description, $Type);
+mysqli_stmt_bind_result($statement, $Incident, $Status, $Solution, $Contact, $Operator, $DateTime, $Description, $Type, $isID, $isDesc, $typeId, $typeDesc, $solutionID, $solutionDesc, $contactID, $contactFirst, $contactLast, $operatorID, $operatorFirst, $operatorLast);
 mysqli_stmt_store_result($statement);
 if (mysqli_stmt_num_rows($statement) > 0) {
 echo "<table>";
@@ -64,13 +64,13 @@ echo "<th>Incident</th> <th>Status</th> <th>Solution</th> <th>Contact</th> <th>O
 while ($row = mysqli_stmt_fetch($statement)) {
     echo "<tr>";
     echo "<td>" . $Incident . "</td>";
-    echo "<td>" . $Status . "</td>";
-    echo "<td>" . $Solution . "</td>";
-    echo "<td>" . $Contact . "</td>";
-    echo "<td>" . $Operator . "</td>";
+    echo "<td>" . $isDesc . "</td>";
+    echo "<td>" . $solutionDesc . "</td>";
+    echo "<td>" . $contactFirst . " " . $contactLast . "</td>";
+    echo "<td>" . $operatorFirst . " " . $operatorLast . "</td>";
     echo "<td>" . $DateTime . "</td>";
     echo "<td>" . $Description . "</td>";
-    echo "<td>" . $Type . "</td>";
+    echo "<td>" . $typeDesc . "</td>";
     echo "<td><a href=>Edit</a></td>"; //needs to be directed to the edit ticket page.
     echo "</tr>";
 }
