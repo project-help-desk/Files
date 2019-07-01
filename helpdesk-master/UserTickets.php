@@ -16,7 +16,7 @@ and open the template in the editor.
                 //{
                 //    session_start();
                // }
-                
+                echo '<a href="input_ticket.php">input new ticket</a>';
                 $DBConnect = mysqli_connect("localhost", "root", "");
                 if ($DBConnect === FALSE)
                 {
