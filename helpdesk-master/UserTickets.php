@@ -11,7 +11,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FAQ</title>
+        <title>User Tickets</title>
         <link rel="stylesheet" href="vendor/Slick/slick.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="fonts/fonts.css">
@@ -48,12 +48,9 @@ and open the template in the editor.
                         mysqli_stmt_execute($stmt);
                         mysqli_stmt_bind_result($stmt, $ticketNumber, $date_time, $Descriprion, $status_id, $Status, $type, $solution, $opp_firstname, $opp_lastname);
                         mysqli_stmt_store_result($stmt);
-
                         if (mysqli_stmt_num_rows($stmt) == 0) {
-
                             echo "<p>You haven't submitted any tickets!</p>";
                         } else {
-
                             echo "<h1>Tickets overview:</h1>";
                             echo "<table border=1px solid black>";
                             echo "<tr><th>Ticket Id</th>
@@ -63,7 +60,7 @@ and open the template in the editor.
                           <th>Incident Status</th>
                           <th>Incident Solution</th>
                           <th>Operator handling your ticket</th>
-                           <th>Picture</th>
+                           <th>Picture</t
                            <th>Edit incident</th>
                            <th>Delete incident</th></tr>";
                             while (mysqli_stmt_fetch($stmt)) {
@@ -74,7 +71,7 @@ and open the template in the editor.
                                 echo "<td><center>" . $Status . "</center></td>";
                                 echo "<td><center>" . $solution . "</center></td>";
                                 echo "<td><center>" . $opp_firstname." ".$opp_lastname. "</center></td>";
-                                echo "<td><center></center></td>";
+                               echo "<td> <img src ='profile/" . $opp_firstname."_".$opp_lastname.".jpg'width = 50 height = 50 alt= Avatar></td>";
                                 if ($status_id == 2 OR $status_id == 4) {
                                     echo '<td></td><td></td></tr>';
                                 } else {
@@ -87,7 +84,6 @@ and open the template in the editor.
                         mysqli_stmt_close($stmt);
                     }
                 }
-
                 mysqli_close($DBConnect);
             }
             echo "";

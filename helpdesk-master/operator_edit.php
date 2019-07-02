@@ -15,15 +15,22 @@
         if (!$conn) {
             echo "Connection to the server  not established";
         }
+        //add solution
+        if (isset($_POST['solution'])) {
+            $solution = $_POST['solution'];
+        } else {
+            $solution = NULL;
+        }
         if (isset($_POST['update'])) {
-            $query = "UPDATE incident SET Status_id = ?, Operator_id = ?, Description= ? WHERE Incident_id=?";
+            $query = "UPDATE incident SET Status_id = ?, Operator_id = ?, Solution= ? WHERE Incident_id=?";
             $status = htmlentities($_POST["status"]);
-            $operatorid = htmlentities($_POST["operatorid"]);
-            $desc = htmlentities($_POST["desc"]);
+            $operatorid = htmlentities($_SESSION["valid_id"]);
+            $ticketid = htmlentities($_GET["id"]);
+
             if ($stmt = mysqli_prepare($conn, $query)) {
-                mysqli_stmt_bind_param($stmt, "iisi", $status, $operatorid, $desc,$_GET["id"]);
+                mysqli_stmt_bind_param($stmt, "iisi", $status, $operatorid, $solution, $ticketid);
                 if (mysqli_stmt_execute($stmt)) {
-                    echo "Update Successful"."<br>";
+                    echo "Update Successful" . "<br>";
                     echo "<a href=ticket_overview.php><button>Back to Ticket</button></a>";
                     echo "<br>";
                 } else {
@@ -52,20 +59,18 @@
         ?>
 
         <form action="" method="POST">
+            <input type="hidden" name="status" value="1">
+            <input type="hidden" name="operatorid" value="$_SESSION['valid_id']">
             <fieldset>
                 <table>
                     <tbody>
                         <tr>
-                           
-                            <td><input type="hidden" name="status" value="1"></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="hidden" name="operatorid" value="$_SESSION['valid_id']"></td>
+                            <td>Description:</td>
+                            <td><?php echo $desc ?></td>
                         </tr>
                         <tr>
                             <td>Solution:</td>
-                            <td><input type="text" name="desc" value="<?php echo $desc; ?>"></td>
+                            <td><input type="text" name="solution"></td>
                         </tr>
                         <tr>
                             <td><input type="submit" name="update" value="Save"></td>
