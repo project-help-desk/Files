@@ -37,7 +37,7 @@ and open the template in the editor.
                 if (!mysqli_select_db($DBConnect, $DBName)) {
                     echo "<p>Connection to the database failed.</p>";
                 } else {
-                    $user_id = $_SESSION['valid_id'];
+                    $user_id = 6;//$_SESSION['valid_id'];
                     $TableName = "incident";
                     //$customerID = $_SESSION['cus_id'];
                     // $incidentId = 7;
@@ -71,7 +71,7 @@ and open the template in the editor.
                                 echo "<td><center>" . $Status . "</center></td>";
                                 echo "<td><center>" . $solution . "</center></td>";
                                 echo "<td><center>" . $opp_firstname." ".$opp_lastname. "</center></td>";
-                               echo "<td> <img src ='profile/" . $opp_firstname."_".$opp_lastname.".jpg'width = 50 height = 50 alt= Avatar></td>";
+                               echo "<td> <img src ='profile/" . $opp_firstname."_".$opp_lastname.".jpg'width = 50 height = 50 alt= Avatar here></td>";
                                 if ($status_id == 2 OR $status_id == 4) {
                                     echo '<td></td><td></td></tr>';
                                 } else {
