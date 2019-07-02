@@ -1,3 +1,0 @@
-use the database provided to test, i couldn't get the database from github to import in my phpmyadmin
-
-should be just a couple changes of database and table names, and it will work
