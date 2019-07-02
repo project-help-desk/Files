@@ -42,7 +42,7 @@
             <div class="table">
                 <?php
                 if (isset($_SESSION['valid_id'])) {
-                    if ($_POST['perm_level'] > 1) {
+                    if ($_SESSION['perm_level'] > 1) {
                         require_once'OverviewReports.php';
                         echo '<fieldset>';
                         echo 'Number of incidents this week&nbsp;&nbsp;&nbsp;: ' . $weekcount . '<br>';

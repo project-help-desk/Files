@@ -37,7 +37,7 @@ and open the template in the editor.
                 if (!mysqli_select_db($DBConnect, $DBName)) {
                     echo "<p>Connection to the database failed.</p>";
                 } else {
-                    $user_id = 6;//$_SESSION['valid_id'];
+                    $user_id = $_SESSION['valid_id'];
                     $TableName = "incident";
                     //$customerID = $_SESSION['cus_id'];
                     // $incidentId = 7;
