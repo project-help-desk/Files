@@ -12,7 +12,7 @@
         <?php include_once 'includes/header.php'; ?>
         <?php
         if (isset($_SESSION['valid_id'])) {
-            if ($_POST['perm_level'] > 1) {
+            if ($_SESSION['perm_level'] > 1) {
                 $conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
                 if (!$conn) {
                     echo "Connection to the server  not established";
