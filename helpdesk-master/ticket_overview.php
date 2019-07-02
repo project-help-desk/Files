@@ -72,22 +72,46 @@ LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                     while ($row = mysqli_stmt_fetch($statement)) {
                         if ($statusID == 0) {
                             //claim button
-                            $link = "operator_edit.php?id=" . $Incident;
+                            $link = "<a href=operator_edit.php?id=" . $Incident . ">Edit</a>";
                         } elseif ($statusID == 1) {
                             if ($_SESSION['valid_id'] == 2) {
                                 //solve button
-                                $link = "solvepage.php?id=" . $Incident;
+                                $link = "<a href=operator_edit.php?id=" . $Incident . ">Edit</a>";
                             } else {
                                 //close button
-                                $link = "closeincident.php?id=" . $Incident;
+
+                                $link = '<form action="" method="POST">
+                                    <input type="submit" value="'. $Incident .'" />
+                                    </form>';
                             }
                         } elseif ($statusID == 3 && $_SESSION['valid_id'] == 3) {
                             //close button
-                            $link = "closeincident.php?id=" . $Incident;
-                        } else {
-                            $link = "#";
-                        }
 
+                            $link = "<a href=operator_edit.php?id=" . $Incident . ">Claim</a>";
+                        } else {
+                            $link = '<form action="" method="POST">
+                                    <input type="hidden" name="incident" value='.$Incident.'>
+                                    <input name="submit" type="submit" value="claim" />
+                                    </form>';   
+                        }
+                        if(isset($_POST['submit'])){
+                        $query = "UPDATE incident SET status_id = 3 WHERE incident_id = ?";
+                        
+                        $name = $_POST["incident"];               
+                        if($stmt=mysqli_prepare($connection,$query))
+                        {     
+                            mysqli_stmt_bind_param($stmt,"i",$Incident);
+                            if(mysqli_stmt_execute($stmt))
+                            {
+                                echo "";
+                                echo "<br>";
+			
+                            }else{echo "Unable to Update ".mysqli_error($connection);}
+
+			mysqli_stmt_close($stmt);
+
+                    }else{echo "Unable to Prepare ".mysqli_error($connection);}	
+                        }
                         echo "<tr>";
                         echo "<td>" . $Incident . "</td>";
                         echo "<td>" . $isDesc . "</td>";
@@ -97,7 +121,7 @@ LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                         echo "<td>" . $DateTime . "</td>";
                         echo "<td>" . $Description . "</td>";
                         echo "<td>" . $typeDesc . "</td>";
-                        echo "<td><a href=$link>Edit</a></td>"; //needs to be directed to the edit ticket page.
+                        echo "<td>$link</td>"; //needs to be directed to the edit ticket page.
                         echo "</tr>";
                     }
                 } else {
@@ -106,7 +130,6 @@ LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                 echo "</table>";
                 mysqli_stmt_close($statement);
                 mysqli_close($connection);
-                
                 ?>
                 <form action="./search.php" method="POST">
                     <input type="text" placeholder="Incident# or Describtion" name="query" />
@@ -119,3 +142,5 @@ LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
         </div>
     </body>
 </html>
+
+
