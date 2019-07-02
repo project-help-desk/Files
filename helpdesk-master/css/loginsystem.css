@@ -60,7 +60,7 @@ input[type=submit]
     text-decoration: none;
     color:  #5bbc2e;
 }
-.form-style .login-error
+.form-style.login-error
 {
     color: red;
     font-size: 15px;

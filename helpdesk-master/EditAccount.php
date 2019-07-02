@@ -23,7 +23,7 @@
                     <p><input type="text" name="firstname" placeholder="First Name" size="35" required value="<?php echo $firstname ?>"></p>
                     <p><input type="text" name="lastname" placeholder="Last Name" size="35" required value="<?php echo $lastname ?>"></p>
                     <p><input type="text" name="licence" placeholder="Licence Code" size="35" value="<?php echo $licence ?>"></p>                    
-                    <input type="submit"name="update" Value="Save">
+                    <input type="submit" name="update" Value="Save">
                 </form>
             </div>
         </div>

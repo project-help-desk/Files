@@ -1,6 +1,6 @@
 <html>
     <head>
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Update ticket</title>
         <link rel="stylesheet" href="vendor/Slick/slick.css">
@@ -19,7 +19,6 @@
             $status = htmlentities($_POST["status"]);
             $operatorid = htmlentities($_POST["operatorid"]);
             $desc = htmlentities($_POST["desc"]);
-
             if ($stmt = mysqli_prepare($conn, $query)) {
                 mysqli_stmt_bind_param($stmt, "iisi", $status, $operatorid, $desc, $_session["valid_id"]);
                 if (mysqli_stmt_execute($stmt)) {
@@ -58,12 +57,10 @@
                             <td>Status ID:</td>
                             <td><input type="text" name="status" value="<?php echo $status; ?>"></td>
                         </tr>
-
                         <tr>
                             <td>Operator ID:</td>
                             <td><input type="text" name="operatorid" value="<?php echo $operatorid; ?>"></td>
                         </tr>
-
                         <tr>
                             <td>Description:</td>
                             <td><input type="text" name="desc" value="<?php echo $desc; ?>"></td>
@@ -75,7 +72,5 @@
                 </table>
             </fieldset>
         </form>
-
-
     </body>
 </html>

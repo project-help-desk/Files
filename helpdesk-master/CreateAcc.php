@@ -13,7 +13,33 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
     $password_new = password_hash($password, PASSWORD_BCRYPT);
     $email = htmlentities($_POST["email"]);
     $phone = htmlentities($_POST["phone"]);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $phone_len = strlen($phone);
+     if (!filter_var($email,FILTER_VALIDATE_EMAIL) && (preg_match('#[0-9]#', $username)) && (($phone_len > 15) || (!is_numeric($phone))) ) 
+     {
+        $emailError = "Please enter an appropriate mail and ";
+        $emailError .= "a valid name,userid should not contain number.";
+        $emailError .= "Enter a valid phone number as well";
+     } 
+     else if (!filter_var($email,FILTER_VALIDATE_EMAIL) && (preg_match('#[0-9]#', $username)))
+     {
+         $emailError = "Please enter an appropriate mail and ";
+         $emailError .= "a valid name,userid should not contain number.";
+     }
+      else if (!filter_var($email,FILTER_VALIDATE_EMAIL) && (($phone_len > 15) || (!is_numeric($phone))) )
+     {
+         $emailError = "Please enter an appropriate mail and ";
+         $emailError .= "Enter a valid phone number as well";
+     }
+      else if ((preg_match('#[0-9]#', $username)) && (($phone_len > 15) || (!is_numeric($phone))) )
+     {
+         $emailError = "Enter aa valid nameshould not contain number";
+         $emailError .= "Enter a valid phone number as well";
+     }
+     else if (($phone_len > 15) || (!is_numeric($phone)) )
+     {
+         $telError = "Enter a valid phone number";
+     }
+    else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailError = "Please enter an appropriate mail  ";
     } else if (preg_match('#[0-9]#', $username)) {
         $nameError = "Invalid name, username should not contain number.";
@@ -44,7 +70,7 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
             $perm_level = 0;
             //Checking if licence is available and correct
             if (isset($_POST['licence'])) {
-                echo "licence is set";
+                echo "licence is set ";
                 $licence = htmlentities($_POST["licence"]);
                 $QueryCheckLicence = "SELECT licence_code FROM licence WHERE licence_code = ? AND company_id = 0";
                 if ($stmt = mysqli_prepare($conn, $QueryCheckLicence)) {
@@ -53,7 +79,7 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
                         mysqli_stmt_bind_result($stmt, $licence_code);
                         mysqli_stmt_store_result($stmt);
                         if (mysqli_stmt_num_rows($stmt) !== 1) {
-                            echo "Licence is incorrect or already used";
+                            echo "Licence is incorrect or already used ";
                         } else {
                             $perm_level = 1;
                         }
@@ -71,20 +97,20 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
                 if (mysqli_stmt_execute($stmt)) {
                     //Inserting company id into licence table when licence is available
                     if ($perm_level == 1) {
-                        echo "starting licence updating";
+                        echo "starting licence updating ";
                         $QueryRegisterLicence = "UPDATE licence SET company_id = (SELECT company_id FROM customer WHERE company_name = ?)
                      WHERE licence_code = ? AND company_id = 0";
                         if ($stmt = mysqli_prepare($conn, $QueryRegisterLicence)) {
                             echo "preparing licence updating";
                             mysqli_stmt_bind_param($stmt, "ss", $company, $licence);
                             if (mysqli_stmt_execute($stmt)) {
-                                echo "executing licence updating";
+                                echo "executing licence updating ";
                                 echo "Company succesfully registered";
                             } else {
-                                echo "Error registering company" . mysqli_error($conn);
+                                echo "Error registering company " . mysqli_error($conn);
                             }
                         } else {
-                            echo "Error registering company" . mysqli_error($conn);
+                            echo "Error registering company " . mysqli_error($conn);
                         }
                     }
                 } else {
@@ -116,7 +142,7 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
                     }
                 }
             } else {
-                echo "Unable to create account " . mysqli_error($conn);
+                echo " Unable to create account " . mysqli_error($conn);
             }
             mysqli_stmt_close($stmt);
         }

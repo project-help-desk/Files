@@ -492,3 +492,8 @@ footer .container p {
     color: #4c4c4c;
     margin: 0;
     padding: 40px 0; }
+
+  span.login-error
+{
+    color:red;
+}
