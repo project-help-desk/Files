@@ -41,6 +41,13 @@
         <div class="container">
             <div class="table">
                 <?php
+                require_once'OverviewReports.php';
+                echo '<fieldset>';
+                echo 'Number of incidents this week&nbsp;&nbsp;&nbsp;: '.$weekcount .'<br>';
+                echo 'Number of incidents this month&nbsp;: '.$monthcount .'<br>';
+                echo 'Number of incidents this year&nbsp;&nbsp;&nbsp;&nbsp;: '.$yearcount;
+                echo '</fieldset><br><br><br>';
+
                 $connection = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
                 if (!$connection) {
                     die("Connection to the database not succeeded " . mysqli_error($connection));
