@@ -23,8 +23,6 @@
                     <p><input type="text" name="firstname" placeholder="First Name" size="35" required value="<?php echo $firstname ?>"></p>
                     <p><input type="text" name="lastname" placeholder="Last Name" size="35" required value="<?php echo $lastname ?>"></p>
                     <p><input type="text" name="licence" placeholder="Licence Code" size="35" value="<?php echo $licence ?>"></p>                    
-                    <p>Please enter your password to change account details</p>
-                    <p><input type="text" name="password" size="35" placeholder="password" required></p>
                     <input type="submit"name="update" Value="Save">
                 </form>
             </div>
