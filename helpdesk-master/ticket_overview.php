@@ -90,7 +90,7 @@ mysqli_stmt_close($statement);
 mysqli_close($connection);
 ?>
         <form action="./search.php" method="POST">
-		    <input type="text" placeholder="Incident Number, or Describtion" name="query" />
+		    <input type="text" placeholder="Incident# or Describtion" name="query" />
 		    <input type="submit" value="Search" />
         </form>
     </div>
