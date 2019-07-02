@@ -56,15 +56,15 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>Status ID:</td>
-                            <td><input type="text" name="status" value="<?php echo $status; ?>"></td>
+                           
+                            <td><input type="hidden" name="status" value="1"></td>
                         </tr>
                         <tr>
-                            <td>Operator ID:</td>
-                            <td><input type="text" name="operatorid" value="<?php echo $operatorid; ?>"></td>
+                            
+                            <td><input type="hidden" name="operatorid" value="$_SESSION['valid_id']"></td>
                         </tr>
                         <tr>
-                            <td>Description:</td>
+                            <td>Solution:</td>
                             <td><input type="text" name="desc" value="<?php echo $desc; ?>"></td>
                         </tr>
                         <tr>
