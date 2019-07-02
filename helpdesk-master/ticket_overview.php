@@ -115,7 +115,7 @@ LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                 mysqli_close($connection);
                 
                 ?>
-                <form action="./search.php" method="POST">
+                <form action="search.php" method="POST">
                     <input type="text" placeholder="Incident# or Describtion" name="query" />
                     <input type="submit" value="Search" />
                 </form>
