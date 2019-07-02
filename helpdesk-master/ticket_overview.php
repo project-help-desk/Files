@@ -45,7 +45,7 @@
                 if (!$connection) {
                     die("Connection to the database not succeeded " . mysqli_error($connection));
                 }
-                $query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution_id, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description,solution.Solution_id,solution.Description,contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
+                $query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description,solution.Solution_id,solution.Description,contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
 FROM incident 
 LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id 
 LEFT JOIN type ON type.type_id = incident.type_id 
@@ -91,7 +91,7 @@ LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                         echo "<tr>";
                         echo "<td>" . $Incident . "</td>";
                         echo "<td>" . $isDesc . "</td>";
-                        echo "<td>" . $solutionDesc . "</td>";
+                        echo "<td>" . $Solution . "</td>";
                         echo "<td>" . $contactFirst . " " . $contactLast . "</td>";
                         echo "<td>" . $operatorFirst . " " . $operatorLast . "</td>";
                         echo "<td>" . $DateTime . "</td>";
