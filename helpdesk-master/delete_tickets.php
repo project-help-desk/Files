@@ -29,7 +29,7 @@
   		if(mysqli_stmt_execute($stmt))
   		{
 
-  			 header("location:index.php");
+  			 header("location:UserTickets.php");
 
   			echo "";
   			

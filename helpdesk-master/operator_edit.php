@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Update Bugs</title>
+	<title>Operator</title>
 	
 </head>
 <body>
