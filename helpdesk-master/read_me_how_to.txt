@@ -35,3 +35,10 @@ step 4
 --enter on the url 'localhost' (make sure Apache and Mysql servers are active in the xampp)
 --click 'helpdesk-master' 
 Now System Is Functional
+
+step 5
+--to get the full experience sign up s a customer and login to view your tickets,
+-- as an operator you can login using
+	username: $Victor
+	Password: 123
+-- to register with a license use the license code: hYVocLt8MP
