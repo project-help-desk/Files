@@ -9,7 +9,7 @@
         <div class="menu-btn not-active"><span></span>
         </div>
         <ul class="menu">
-            <li><a href="#">Faq</a>
+            <li><a href="faq/faq.php">Faq</a>
             </li>
             <li><a href="#">buy a license</a>
             </li>
