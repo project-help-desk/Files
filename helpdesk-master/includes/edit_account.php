@@ -7,17 +7,17 @@ if (!$conn) {
 }
 if (isset($_POST['update']) && isset($_SESSION["valid_id"])) {
 
-    $query = "UPDATE contact SET first_name = ?, last_name = ?, phone = ?, email = ?, username =?,email=? WHERE contact_id=?";
+    $query = "UPDATE contact SET first_name = ?, last_name = ?, phone = ?, email = ?, username =? WHERE contact_id=?";
 
     $user_name = htmlentities($_POST["username"]);
     $email = htmlentities($_POST["email"]);
     $phone = htmlentities($_POST["phone"]);
     $first_name = htmlentities($_POST["firstname"]);
     $last_name = htmlentities($_POST["lastname"]);
-    $email = htmlentities($_POST["licence"]);
+//    $license_id = htmlentities($_POST["licence"]);
     if ($stmt = mysqli_prepare($conn, $query)) {
 
-        mysqli_stmt_bind_param($stmt, "ssisssi", $user_name, $email, $phone, $first_name, $last_name, $email, $_session["valid_id"]);
+        mysqli_stmt_bind_param($stmt, "ssissi",$first_name, $last_name, $phone,$email, $user_name,$_SESSION["valid_id"]);
         if (mysqli_stmt_execute($stmt)) {
             echo "";
             echo "<br>";

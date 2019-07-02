@@ -29,6 +29,9 @@
                         if (isset($emailError)) {
                             echo $emailError;
                         }
+                        if(isset($telError)){
+                            echo "$telError"; 
+                        }
                         ?>
                     </span>
                     <?php
@@ -44,10 +47,13 @@
                         if(isset($_POST['newAccount'])){
                             echo '<p><input type="text" name="licence" placeholder="Licence Code" size="35" required></p>';
                             echo '<p><input type="submit"name="submitAcc" Value="Register"></p>';
+                               echo '<p><input type="hidden" name="newAccount"></p>';
+                            
                         } else {
                             echo '<p><input type="text" name="company" placeholder="Company Name" size="35" required></p>';
                             echo '<p><input type="text" name="licence" placeholder="Licence Code (if available)" size="35"></p>';
                             echo '<p><input type="submit"name="submitComp" Value="Register"></p>';
+                             echo '<p><input type="hidden" name="newComp"></p>';
                         }
                         
                     } else {

@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php // session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@ while ($row = mysqli_stmt_fetch($statement)) {
     echo "<td>" . $DateTime . "</td>";
     echo "<td>" . $Description . "</td>";
     echo "<td>" . $typeDesc . "</td>";
-    echo "<td><a href=>Edit</a></td>"; //needs to be directed to the edit ticket page.
+    echo "<td><a href=operator_edit.php?id=$Incident>Edit</a></td>"; //needs to be directed to the edit ticket page.
     echo "</tr>";
 }
 }
