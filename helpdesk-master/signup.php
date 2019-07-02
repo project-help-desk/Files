@@ -16,11 +16,13 @@
         <?php
         include"CreateAcc.php";
         ?>
+       
 
         <div class="form-div">
             <div class="form-style">
-                
+                 <h2> Sign-Up here</h2>
                 <form action="" method="POST">
+                    
                     <span class="login-error">
                         <?php
                         if (isset($nameError)) {
