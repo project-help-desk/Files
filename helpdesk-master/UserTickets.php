@@ -26,6 +26,7 @@ and open the template in the editor.
             //{
             //    session_start();
             // }
+            echo '<a href="input_ticket.php">input new ticket</a>';
             include_once 'includes/dbh-inc.php';
             $user_id = $_SESSION['valid_id'];
             $TableName = "incident";
@@ -71,8 +72,10 @@ and open the template in the editor.
                 }
                 mysqli_stmt_close($stmt);
             }
+
             mysqli_close($conn);
-            echo "<a href=\"input_ticket.php\" class=\"button\">Add new ticket</a>";
+
+            echo "";
             ?>
         </div>
         <footer>
