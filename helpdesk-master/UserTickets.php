@@ -70,8 +70,8 @@ and open the template in the editor.
                                 echo "<td><center>" . $Descriprion . "</center></td>";
                                 echo "<td><center>" . $Status . "</center></td>";
                                 echo "<td><center>" . $solution . "</center></td>";
-                                echo "<td><center>" . $opp_firstname." ".$opp_lastname. "</center></td>";
-                               echo "<td> <img src ='profile/" . $opp_firstname."_".$opp_lastname.".jpg'width = 50 height = 50 alt= Avatar here></td>";
+                                echo "<td><center>" . $opp_firstname . " " . $opp_lastname . "</center></td>";
+                                echo "<td> <img src ='profile/" . $opp_firstname . "_" . $opp_lastname . ".jpg'width = 50 height = 50 alt= Avatar here></td>";
                                 if ($status_id == 2 OR $status_id == 4) {
                                     echo '<td></td><td></td></tr>';
                                 } else {

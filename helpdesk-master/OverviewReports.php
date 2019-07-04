@@ -48,7 +48,7 @@ if ($statement = mysqli_prepare($conn, $yearquery)) {
     if (mysqli_stmt_execute($statement)) {
         mysqli_stmt_bind_result($statement, $yearcount);
         mysqli_stmt_store_result($statement);
-        mysqli_stmt_fetch($statement); 
+        mysqli_stmt_fetch($statement);
     } else {
         echo "error inserting incident";
         die(mysqli_error($conn));

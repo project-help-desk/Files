@@ -12,15 +12,15 @@
     </head>
 
     <body>
-        <?php include_once 'includes/header.php';?>
+        <?php include_once 'includes/header.php'; ?>
         <div class="banner-block clearfix">
             <div class="container">
                 <div class="banner-txt">
                     <h2>We are <span>here to </span>help you!</h2><span class="line"> </span>
                     <p>Find the solution for your problem</p>
                     <?php
-                    if(isset($_SESSION['valid_id'])){
-                        if($_SESSION['valid_id'] >1){
+                    if (isset($_SESSION['valid_id'])) {
+                        if ($_SESSION['valid_id'] > 1) {
                             echo '<a href="userTickets.php">Get started</a>';
                         } else {
                             echo '<a href="ticket_overview.php">Get started</a>';
@@ -58,7 +58,6 @@
                 </div>
             </div>
         </div>
-
         <script src="vendor/jquery/jquery-3.2.0.min.js"></script>
         <script src="js/core.js"></script>
         <?php include_once 'includes/footer.php'; ?>
