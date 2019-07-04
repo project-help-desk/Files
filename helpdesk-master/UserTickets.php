@@ -72,8 +72,8 @@ and open the template in the editor.
                                 if ($status_id == 2 OR $status_id == 4) {
                                     echo '<td></td><td></td></tr>';
                                 } else {
-                                    echo "<td><a href=edit_tickets.php?id=$ticketNumber>Edit</a></td>";
-                                    echo "<td><a href=delete_tickets.php?class=$ticketNumber>Delete </a></td></tr>";
+                                    echo "<td><center><a href=edit_tickets.php?id=$ticketNumber>Edit</a></center></td>";
+                                    echo "<td><center><a href=delete_tickets.php?class=$ticketNumber>Delete</a></center></td></tr>";
                                 }
                             }
                             echo '</table>';
