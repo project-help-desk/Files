@@ -11,7 +11,10 @@ if (isset($_GET['class'])) {
       ConfirmDelete();
       </script>";
 }
-include_once 'includes/dbh-inc.php';
+$conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
+if (!$conn) {
+    echo "Unable to connect to server";
+}
 $query_delete = "DELETE FROM incident WHERE incident_id=?";
 if ($stmt = mysqli_prepare($conn, $query_delete)) {
     mysqli_stmt_bind_param($stmt, "i", $_GET["class"]);

@@ -27,7 +27,10 @@
     <body>
         <?php include_once 'includes/header.php'; ?>
         <?php
-        include_once 'includes/dbh-inc.php';
+        $conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
+        if (!$conn) {
+            echo "Unable to connect to server";
+        }
         if (isset($_POST['update'])) {
             $query = "UPDATE incident SET Description =? WHERE incident_id=?";
             $description = filter_var($_POST["description"], FILTER_SANITIZE_STRING);

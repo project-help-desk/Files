@@ -4,7 +4,7 @@ $currentDate = date('Y-m-d');
 $WeekDate = date('Y-m-d', strtotime('-7 days'));
 $MonthDate = date('Y-m-d', strtotime('-30 days'));
 $YearDate = date('Y-m-d', strtotime('-365 days'));
-include_once 'includes/dbh-inc.php';
+$conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
 $weekquery = "SELECT count(incident_id) 
 FROM incident
 WHERE

@@ -26,7 +26,10 @@ and open the template in the editor.
             $username = "root";
             $password = "";
             $databasename = "stenden_helpdesk";
-            include_once 'includes/dbh-inc.php';
+            $conn = mysqli_connect($servername, $username, $password, $databasename);
+            if (!$conn) {
+                die('Connection failed: ' . mysqli_connect_error());
+            }
             if (isset($_SESSION['valid_id'])) {
                 if ($_SESSION['valid_id'] > 0) {
                     echo'<div class="error">';

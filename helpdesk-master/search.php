@@ -96,7 +96,11 @@
                     </tr>
                 </table>
                 <?php
-                include_once 'includes/dbh-inc.php';
+                $conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
+
+                if (mysqli_connect_errno()) {
+                    echo "Failed to connect: " . mysqli_connect_error();
+                }
                 error_reporting(0);
                 $output = '';
                 if (isset($_POST['query']) && $_POST['query'] !== ' ') {

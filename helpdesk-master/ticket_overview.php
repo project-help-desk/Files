@@ -45,7 +45,10 @@
                         echo 'Number of incidents this year&nbsp;&nbsp;&nbsp;&nbsp;: ' . $yearcount;
                         echo '</fieldset><br><br><br>';
 
-                        include_once 'includes/dbh-inc.php';
+                        $connection = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
+                        if (!$connection) {
+                            die("Connection to the database not succeeded " . mysqli_error($connection));
+                        }
                         $query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description, contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
                             FROM incident 
                             LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id 
@@ -53,15 +56,15 @@
                             LEFT JOIN contact ON contact.Contact_id = incident.Contact_id 
                             LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                             ";
-                        if ($statement = mysqli_prepare($conn, $query_select)) {
+                        if ($statement = mysqli_prepare($connection, $query_select)) {
                             if (mysqli_stmt_execute($statement)) {
                                 
                             } else {
                                 echo "Unable to select the table";
-                                die(mysqli_error($conn));
+                                die(mysqli_error($connection));
                             }
                         } else {
-                            die(mysqli_error($conn));
+                            die(mysqli_error($connection));
                         }
                         mysqli_stmt_bind_result($statement, $Incident, $statusID, $Solution, $Contact, $Operator, $DateTime, $Description, $Type, $isID, $isDesc, $typeId, $typeDesc, $contactID, $contactFirst, $contactLast, $operatorID, $operatorFirst, $operatorLast);
                         mysqli_stmt_store_result($statement);
@@ -109,33 +112,33 @@
                             }
                             if (isset($_POST['close1'])) {
                                 $query = "UPDATE incident SET status_id = 2 WHERE incident_id = ?";
-                                if ($stmt = mysqli_prepare($conn, $query)) {
+                                if ($stmt = mysqli_prepare($connection, $query)) {
                                     mysqli_stmt_bind_param($stmt, "i", $_POST['incidentid']);
                                     if (mysqli_stmt_execute($stmt)) {
                                         echo "";
                                         echo "<br>";
                                     } else {
-                                        echo "Unable to Update " . mysqli_error($conn);
+                                        echo "Unable to Update " . mysqli_error($connection);
                                     }
 
                                     mysqli_stmt_close($stmt);
                                 } else {
-                                    echo "Unable to Prepare " . mysqli_error($conn);
+                                    echo "Unable to Prepare " . mysqli_error($connection);
                                 }
                             }
                             if (isset($_POST['close3'])) {
                                 $query = "UPDATE incident SET status_id = 4 WHERE incident_id = ?";
-                                if ($stmt = mysqli_prepare($conn, $query)) {
+                                if ($stmt = mysqli_prepare($connection, $query)) {
                                     mysqli_stmt_bind_param($stmt, "i", $_POST['incidentid']);
                                     if (mysqli_stmt_execute($stmt)) {
                                         echo "";
                                         echo "<br>";
                                     } else {
-                                        echo "Unable to Update " . mysqli_error($conn);
+                                        echo "Unable to Update " . mysqli_error($connection);
                                     }
                                     mysqli_stmt_close($stmt);
                                 } else {
-                                    echo "Unable to Prepare " . mysqli_error($conn);
+                                    echo "Unable to Prepare " . mysqli_error($connection);
                                 }
                             }
                         } else {
@@ -143,7 +146,7 @@
                         }
                         echo "</table>";
                         mysqli_stmt_close($statement);
-                        mysqli_close($conn);
+                        mysqli_close($connection);
                         ?>
                         <form action="search.php" method="POST">
                             <input type="text" placeholder="Incident# or Describtion" name="query" />

@@ -1,6 +1,10 @@
 <?php
 
-include_once 'includes/dbh-inc.php';
+$conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
+if (!$conn) {
+    echo "Connection to the server  not established";
+}
+
 if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
     $firstname = htmlentities($_POST["firstname"]);
     $lastname = htmlentities($_POST["lastname"]);
