@@ -6,7 +6,7 @@
     height: auto;
     background-color: white;
     margin-bottom:128px;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .form-style
@@ -22,7 +22,7 @@
     height: 340px;
     background-color: white;
     margin-bottom: 265px;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 .form-style-login
 {
