@@ -9,23 +9,10 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="fonts/fonts.css">
         <link rel="stylesheet" href="css/usertickets.css">
-        <style type="text/css">
-            input[type=text]
-            {
-                height: 30px;
-            }
-            input[type=submit]
-            {
-                width: 70px;
-                border:none;
-                background-color: #5bbc2e;
-                cursor: pointer;
-                color:white;
-            }
-        </style>
     </head>
     <body>
-        <?php include_once 'includes/header.php';
+        <?php include_once 'includes/header.php'; ?>
+        <?php
         include_once 'includes/dbh-inc.php';
         if (isset($_POST['update'])) {
             $query = "UPDATE incident SET Description =? WHERE incident_id=?";
@@ -33,8 +20,9 @@
             if ($stmt = mysqli_prepare($conn, $query)) {
                 mysqli_stmt_bind_param($stmt, "si", $description, $_GET["id"]);
                 if (mysqli_stmt_execute($stmt)) {
-                    echo "Update Successful";
+                    echo "<span>Update Successful, you will be redirected to the ticket overview.</span>";
                     echo "<br>";
+                    header("Refresh: 5; URL=UserTickets.php");
                 } else {
                     echo "Unable to Update " . mysqli_error($conn);
                 }
@@ -63,8 +51,8 @@
         ?>
         <form action="" method="POST">
             <h2>Edit ticket Description</h2>	
-            <p><input type="text" name="description" value="<?php echo $description ?>"></p>
-            <p><input type="submit"name="update" value="Update"></p>
+            <textarea name="description" rows="4" cols="30"><?php echo $description ?></textarea>
+            <p><input type="submit" name="update" value="Update"></p>
         </form>
     </body>
 </html>

@@ -28,7 +28,7 @@
             float: left;
             width: 100%;
             height: 850px;
-            padding-top: 300px;
+            padding-top: 50px;
         }
     </style>
     <body>
