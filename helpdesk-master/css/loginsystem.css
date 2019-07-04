@@ -1,11 +1,10 @@
 .form-div
 {
-    margin: 150px auto;
+    margin: 0px auto;
+    margin-top:70px;
     width: 440px;
-    height: 700px;
     background-color: white;
-    margin-bottom: 265px;
-
+    margin-bottom:128px;
 }
 
 .form-style
