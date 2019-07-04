@@ -27,31 +27,22 @@ and open the template in the editor.
             //    session_start();
             // }
             echo '<a href="input_ticket.php">input new ticket</a>';
-            $DBConnect = mysqli_connect("localhost", "root", "");
-            if ($DBConnect === FALSE) {
-                echo "<p>Unable to connect to the database server.</p>"
-                . "<p>Error code " . mysqli_errno() . ": " . mysqli_error()
-                . "</p>";
-            } else {
-                $DBName = "stenden_helpdesk";
-                if (!mysqli_select_db($DBConnect, $DBName)) {
-                    echo "<p>Connection to the database failed.</p>";
-                } else {
-                    $user_id = $_SESSION['valid_id'];
-                    $TableName = "incident";
-                    $SQLstring = "SELECT incident.Incident_id, incident.Date_time, incident.Description, incident_status.status_id, incident_status.Description, type.type_description, incident.solution, operator.First_name, operator.Last_name FROM incident LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id LEFT JOIN type ON type.type_id = incident.type_id LEFT JOIN contact ON contact.Contact_id = incident.Contact_id LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
+            include_once 'includes/dbh-inc.php';
+            $user_id = $_SESSION['valid_id'];
+            $TableName = "incident";
+            $SQLstring = "SELECT incident.Incident_id, incident.Date_time, incident.Description, incident_status.status_id, incident_status.Description, type.type_description, incident.solution, operator.First_name, operator.Last_name FROM incident LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id LEFT JOIN type ON type.type_id = incident.type_id LEFT JOIN contact ON contact.Contact_id = incident.Contact_id LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                     WHERE Incident.contact_id = ?";
-                    if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) {
-                        mysqli_stmt_bind_param($stmt, 's', $user_id);
-                        mysqli_stmt_execute($stmt);
-                        mysqli_stmt_bind_result($stmt, $ticketNumber, $date_time, $Descriprion, $status_id, $Status, $type, $solution, $opp_firstname, $opp_lastname);
-                        mysqli_stmt_store_result($stmt);
-                        if (mysqli_stmt_num_rows($stmt) == 0) {
-                            echo "<p>You haven't submitted any tickets!</p>";
-                        } else {
-                            echo "<h1>Tickets overview:</h1>";
-                            echo "<table border=1px solid black>";
-                            echo "<tr><th>Ticket Id</th>
+            if ($stmt = mysqli_prepare($conn, $SQLstring)) {
+                mysqli_stmt_bind_param($stmt, 's', $user_id);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_bind_result($stmt, $ticketNumber, $date_time, $Descriprion, $status_id, $Status, $type, $solution, $opp_firstname, $opp_lastname);
+                mysqli_stmt_store_result($stmt);
+                if (mysqli_stmt_num_rows($stmt) == 0) {
+                    echo "<p>You haven't submitted any tickets!</p>";
+                } else {
+                    echo "<h1>Tickets overview:</h1>";
+                    echo "<table border=1px solid black>";
+                    echo "<tr><th>Ticket Id</th>
                            <th>Incident Type</th>
                            <th>Incident Submition Date</th>
                           <th>Incident Description</th>
@@ -61,29 +52,29 @@ and open the template in the editor.
                            <th>Picture</th>
                            <th>Edit incident</th>
                            <th>Delete incident</th></tr>";
-                            while (mysqli_stmt_fetch($stmt)) {
-                                echo "<tr><td><center>" . $ticketNumber . "</center></td>";
-                                echo "<td><center>" . $type . "</center></td>";
-                                echo "<td><center>" . $date_time . "</center></td>";
-                                echo "<td><center>" . $Descriprion . "</center></td>";
-                                echo "<td><center>" . $Status . "</center></td>";
-                                echo "<td><center>" . $solution . "</center></td>";
-                                echo "<td><center>" . $opp_firstname . " " . $opp_lastname . "</center></td>";
-                                echo "<td> <img src ='profile/" . $opp_firstname . "_" . $opp_lastname . ".jpg'width = 50 height = 50 alt= Avatar here></td>";
-                                if ($status_id == 2 OR $status_id == 4) {
-                                    echo '<td></td><td></td></tr>';
-                                } else {
-                                    echo "<td><a href=edit_tickets.php?id=$ticketNumber>Edit</a></td>";
-                                    echo "<td><a href=delete_tickets.php?class=$ticketNumber>Delete </a></td></tr>";
-                                }
-                            }
-                            echo '</table>';
+                    while (mysqli_stmt_fetch($stmt)) {
+                        echo "<tr><td><center>" . $ticketNumber . "</center></td>";
+                        echo "<td><center>" . $type . "</center></td>";
+                        echo "<td><center>" . $date_time . "</center></td>";
+                        echo "<td><center>" . $Descriprion . "</center></td>";
+                        echo "<td><center>" . $Status . "</center></td>";
+                        echo "<td><center>" . $solution . "</center></td>";
+                        echo "<td><center>" . $opp_firstname . " " . $opp_lastname . "</center></td>";
+                        echo "<td> <img src ='profile/" . $opp_firstname . "_" . $opp_lastname . ".jpg'width = 50 height = 50 alt= Avatar here></td>";
+                        if ($status_id == 2 OR $status_id == 4) {
+                            echo '<td></td><td></td></tr>';
+                        } else {
+                            echo "<td><a href=edit_tickets.php?id=$ticketNumber>Edit</a></td>";
+                            echo "<td><a href=delete_tickets.php?class=$ticketNumber>Delete </a></td></tr>";
                         }
-                        mysqli_stmt_close($stmt);
                     }
+                    echo '</table>';
                 }
-                mysqli_close($DBConnect);
+                mysqli_stmt_close($stmt);
             }
+
+            mysqli_close($conn);
+
             echo "";
             ?>
         </div>

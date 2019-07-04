@@ -13,10 +13,7 @@
         <?php
         if (isset($_SESSION['valid_id'])) {
             if ($_SESSION['perm_level'] > 1) {
-                $conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
-                if (!$conn) {
-                    echo "Connection to the server  not established";
-                }
+                include_once 'includes/dbh-inc.php';
                 //add solution
                 if (isset($_POST['solution'])) {
                     $solution = $_POST['solution'];
