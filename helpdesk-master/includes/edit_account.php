@@ -19,8 +19,9 @@ if (isset($_POST['update']) && isset($_SESSION["valid_id"])) {
 
         mysqli_stmt_bind_param($stmt, "ssissi",$first_name, $last_name, $phone,$email, $user_name,$_SESSION["valid_id"]);
         if (mysqli_stmt_execute($stmt)) {
-            echo "";
+            echo "Information succesfully updated, you will be redirected to the ticket overview.";
             echo "<br>";
+            header("Refresh: 5; URL=UserTickets.php");
         } else {
             echo "Unable to Update " . mysqli_error($conn);
         }
