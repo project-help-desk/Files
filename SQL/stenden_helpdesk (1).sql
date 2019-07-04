@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2019 at 01:03 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- Gegenereerd op: 04 jul 2019 om 14:20
+-- Serverversie: 10.1.37-MariaDB
+-- PHP-versie: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Tabelstructuur voor tabel `contact`
 --
 
 CREATE TABLE `contact` (
@@ -40,18 +40,18 @@ CREATE TABLE `contact` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `contact`
+-- Gegevens worden geëxporteerd voor tabel `contact`
 --
 
 INSERT INTO `contact` (`Contact_id`, `Company_id`, `First_name`, `Last_name`, `Phone`, `Email`, `Username`, `password`) VALUES
-(5, 10, 'QW', 'E', 1234124123, 'QWE@QWE.com', 'QWE', '$2y$10$TRg6zXc8zaTwZ44KxwQrvOBj8grf9udzmIZfjJcq0EXzm0UnZ4lEO'),
-(6, 11, 'test', 'test', 2147483647, 'test@test.test', 'Test', '$2y$10$8fdw5MOIrcAoKSR1qg7jGecn5WUqGNS0X2ZrqPmMnIb5/Xa30kxX2'),
-(7, 11, 'Thomas', 'Koops', 2147483647, 'thomas_koops@hotmail.com', 'Thomas', '$2y$10$AYBLu4p4TCuU92Q3e2CDeuajPvpGKMdq8PuVzhQahPDjXUUk7KzVG');
+(5, 10, 'Pauletta ', 'Tammie', 1234124123, 'PT@Gmail.com', 'PT', '$2y$10$TRg6zXc8zaTwZ44KxwQrvOBj8grf9udzmIZfjJcq0EXzm0UnZ4lEO'),
+(6, 11, 'Trina', 'Ash', 2147483647, 'TA@Gmail.com', 'TA', '$2y$10$8fdw5MOIrcAoKSR1qg7jGecn5WUqGNS0X2ZrqPmMnIb5/Xa30kxX2'),
+(7, 11, 'Martha', 'Garnet', 2147483647, 'MG@Gmail.com', 'MG', '$2y$10$AYBLu4p4TCuU92Q3e2CDeuajPvpGKMdq8PuVzhQahPDjXUUk7KzVG');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Tabelstructuur voor tabel `customer`
 --
 
 CREATE TABLE `customer` (
@@ -61,42 +61,45 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `customer`
+-- Gegevens worden geëxporteerd voor tabel `customer`
 --
 
 INSERT INTO `customer` (`Company_id`, `Company_name`, `Perm_level`) VALUES
 (0, 'Unregistered', NULL),
-(10, 'QWE entertainment', 0),
-(11, 'Test', 0);
+(10, 'QWE economics', 0),
+(11, 'FSA logistics', 0),
+(13, 'aaa', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `incident`
+-- Tabelstructuur voor tabel `incident`
 --
 
 CREATE TABLE `incident` (
   `Incident_id` int(4) NOT NULL,
   `Status_id` int(4) NOT NULL DEFAULT '0',
-  `Solution_id` int(4) DEFAULT NULL,
   `Contact_id` int(4) NOT NULL,
   `Operator_id` int(4) DEFAULT NULL,
   `Date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Description` varchar(254) NOT NULL,
-  `type_id` int(4) DEFAULT NULL
+  `type_id` int(4) DEFAULT NULL,
+  `Solution` varchar(254) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `incident`
+-- Gegevens worden geëxporteerd voor tabel `incident`
 --
 
-INSERT INTO `incident` (`Incident_id`, `Status_id`, `Solution_id`, `Contact_id`, `Operator_id`, `Date_time`, `Description`, `type_id`) VALUES
-(7, 0, NULL, 7, NULL, '2019-06-30 23:01:16', 'adsdasd', 1);
+INSERT INTO `incident` (`Incident_id`, `Status_id`, `Contact_id`, `Operator_id`, `Date_time`, `Description`, `type_id`, `Solution`) VALUES
+(7, 4, 7, 1, '2019-06-30 23:01:16', 'Problems with logging in', 1, 'Mail send about reseting your account'),
+(8, 3, 7, 1, '2019-07-01 23:56:38', 'Would like x feature', 5, 'Feature will be in the next update'),
+(9, 0, 7, 1, '2019-07-01 23:56:41', 'Loading times are too long', 2, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `incident_status`
+-- Tabelstructuur voor tabel `incident_status`
 --
 
 CREATE TABLE `incident_status` (
@@ -105,7 +108,7 @@ CREATE TABLE `incident_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `incident_status`
+-- Gegevens worden geëxporteerd voor tabel `incident_status`
 --
 
 INSERT INTO `incident_status` (`Status_id`, `Description`) VALUES
@@ -118,7 +121,7 @@ INSERT INTO `incident_status` (`Status_id`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `licence`
+-- Tabelstructuur voor tabel `licence`
 --
 
 CREATE TABLE `licence` (
@@ -127,7 +130,7 @@ CREATE TABLE `licence` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `licence`
+-- Gegevens worden geëxporteerd voor tabel `licence`
 --
 
 INSERT INTO `licence` (`Licence_code`, `Company_id`) VALUES
@@ -140,7 +143,7 @@ INSERT INTO `licence` (`Licence_code`, `Company_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `operator`
+-- Tabelstructuur voor tabel `operator`
 --
 
 CREATE TABLE `operator` (
@@ -154,21 +157,18 @@ CREATE TABLE `operator` (
   `Username` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `operator`
+--
+
+INSERT INTO `operator` (`Operator_id`, `First_name`, `Last_name`, `Email`, `Perm_level`, `Picture`, `Password`, `Username`) VALUES
+(1, 'Victor', 'Peters', 'Victor.Peters@stenden.com', 3, '', '$2y$10$AYBLu4p4TCuU92Q3e2CDeuajPvpGKMdq8PuVzhQahPDjXUUk7KzVG', 'Victor'),
+(2, 'Oper', 'Ator', 'Oper_Ator@gmail.com', 2, '', '$2y$10$baxsQ2gLmcYY2cN.yLknT.OE1Ssq09AgnOrrRdycXXLDV8DU6hLeu', 'Operator');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `solution`
---
-
-CREATE TABLE `solution` (
-  `Solution_id` int(4) NOT NULL,
-  `Description` varchar(254) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `type`
+-- Tabelstructuur voor tabel `type`
 --
 
 CREATE TABLE `type` (
@@ -177,7 +177,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `type`
+-- Gegevens worden geëxporteerd voor tabel `type`
 --
 
 INSERT INTO `type` (`type_id`, `type_description`) VALUES
@@ -189,11 +189,11 @@ INSERT INTO `type` (`type_id`, `type_description`) VALUES
 (6, 'Other');
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `contact`
+-- Indexen voor tabel `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`Contact_id`),
@@ -202,117 +202,103 @@ ALTER TABLE `contact`
   ADD KEY `Company_id` (`Company_id`);
 
 --
--- Indexes for table `customer`
+-- Indexen voor tabel `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`Company_id`),
   ADD UNIQUE KEY `Company_name` (`Company_name`);
 
 --
--- Indexes for table `incident`
+-- Indexen voor tabel `incident`
 --
 ALTER TABLE `incident`
   ADD PRIMARY KEY (`Incident_id`),
   ADD KEY `FK_status_id` (`Status_id`),
-  ADD KEY `FK_solution_id` (`Solution_id`),
   ADD KEY `fk_contact_id` (`Contact_id`),
   ADD KEY `fk_operator_id` (`Operator_id`),
   ADD KEY `fk_type_id` (`type_id`);
 
 --
--- Indexes for table `incident_status`
+-- Indexen voor tabel `incident_status`
 --
 ALTER TABLE `incident_status`
   ADD PRIMARY KEY (`Status_id`);
 
 --
--- Indexes for table `licence`
+-- Indexen voor tabel `licence`
 --
 ALTER TABLE `licence`
   ADD PRIMARY KEY (`Licence_code`),
   ADD KEY `fk_company_id` (`Company_id`);
 
 --
--- Indexes for table `operator`
+-- Indexen voor tabel `operator`
 --
 ALTER TABLE `operator`
   ADD PRIMARY KEY (`Operator_id`),
   ADD UNIQUE KEY `Username` (`Username`);
 
 --
--- Indexes for table `solution`
---
-ALTER TABLE `solution`
-  ADD PRIMARY KEY (`Solution_id`);
-
---
--- Indexes for table `type`
+-- Indexen voor tabel `type`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`type_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `contact`
+-- AUTO_INCREMENT voor een tabel `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `Contact_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Contact_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT voor een tabel `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `Company_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Company_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `incident`
+-- AUTO_INCREMENT voor een tabel `incident`
 --
 ALTER TABLE `incident`
-  MODIFY `Incident_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Incident_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `incident_status`
+-- AUTO_INCREMENT voor een tabel `incident_status`
 --
 ALTER TABLE `incident_status`
   MODIFY `Status_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `operator`
+-- AUTO_INCREMENT voor een tabel `operator`
 --
 ALTER TABLE `operator`
-  MODIFY `Operator_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `Operator_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `solution`
---
-ALTER TABLE `solution`
-  MODIFY `Solution_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- Constraints for dumped tables
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Constraints for table `contact`
+-- Beperkingen voor tabel `contact`
 --
 ALTER TABLE `contact`
   ADD CONSTRAINT `Company_id` FOREIGN KEY (`Company_id`) REFERENCES `customer` (`Company_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `incident`
+-- Beperkingen voor tabel `incident`
 --
 ALTER TABLE `incident`
-  ADD CONSTRAINT `FK_solution_id` FOREIGN KEY (`Solution_id`) REFERENCES `solution` (`Solution_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_status_id` FOREIGN KEY (`Status_id`) REFERENCES `incident_status` (`Status_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_contact_id` FOREIGN KEY (`Contact_id`) REFERENCES `contact` (`Contact_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_operator_id` FOREIGN KEY (`Operator_id`) REFERENCES `operator` (`Operator_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `type` (`type_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `licence`
+-- Beperkingen voor tabel `licence`
 --
 ALTER TABLE `licence`
   ADD CONSTRAINT `fk_company_id` FOREIGN KEY (`Company_id`) REFERENCES `customer` (`Company_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
