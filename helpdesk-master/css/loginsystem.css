@@ -17,10 +17,11 @@
 .form-div-login
 {
     margin: 150px auto;
+    margin-top:70px;
     width: 440px;
-    height: 340px;
+    height: auto;
     background-color: white;
-    margin-bottom: 265px;
+    margin-bottom:126px;
 
 }
 .form-style-login
