@@ -49,9 +49,10 @@ and open the template in the editor.
                             if ($statement = mysqli_prepare($conn, $sql)) {
                                 //s means binding string
                                 //Binds variables to a prepared statement as parameters
-                                mysqli_stmt_bind_param($statement, "ssii", $date, $desc, $issue,$contact_id);
+                                mysqli_stmt_bind_param($statement, "ssii", $date, $desc, $issue, $contact_id);
                                 if (mysqli_stmt_execute($statement)) {
-                                    echo "Incident inserted successfully";
+                                    echo "Incident inserted successfully, you will be redirected to your tickets.";
+                                    header("Refresh: 5; URL=UserTickets.php");
                                 } else {
                                     echo "error inserting incident";
                                     die(mysqli_error($conn));
@@ -109,7 +110,5 @@ and open the template in the editor.
         <script src="vendor/jquery/jquery-3.2.0.min.js"></script>
         <script src="js/core.js"></script>
         <?php include_once 'includes/footer.php'; ?>
-
-
     </body>
 </html>

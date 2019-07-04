@@ -14,32 +14,22 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
     $email = htmlentities($_POST["email"]);
     $phone = htmlentities($_POST["phone"]);
     $phone_len = strlen($phone);
-     if (!filter_var($email,FILTER_VALIDATE_EMAIL) && (preg_match('#[0-9]#', $username)) && (($phone_len > 15) || (!is_numeric($phone))) ) 
-     {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) && (preg_match('#[0-9]#', $username)) && (($phone_len > 15) || (!is_numeric($phone)))) {
         $emailError = "Please enter an appropriate mail and ";
         $emailError .= "a valid name,userid should not contain number.";
         $emailError .= "Enter a valid phone number as well";
-     } 
-     else if (!filter_var($email,FILTER_VALIDATE_EMAIL) && (preg_match('#[0-9]#', $username)))
-     {
-         $emailError = "Please enter an appropriate mail and ";
-         $emailError .= "a valid name,userid should not contain number.";
-     }
-      else if (!filter_var($email,FILTER_VALIDATE_EMAIL) && (($phone_len > 15) || (!is_numeric($phone))) )
-     {
-         $emailError = "Please enter an appropriate mail and ";
-         $emailError .= "Enter a valid phone number as well";
-     }
-      else if ((preg_match('#[0-9]#', $username)) && (($phone_len > 15) || (!is_numeric($phone))) )
-     {
-         $emailError = "Enter aa valid nameshould not contain number";
-         $emailError .= "Enter a valid phone number as well";
-     }
-     else if (($phone_len > 15) || (!is_numeric($phone)) )
-     {
-         $telError = "Enter a valid phone number";
-     }
-    else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && (preg_match('#[0-9]#', $username))) {
+        $emailError = "Please enter an appropriate mail and ";
+        $emailError .= "a valid name,userid should not contain number.";
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && (($phone_len > 15) || (!is_numeric($phone)))) {
+        $emailError = "Please enter an appropriate mail and ";
+        $emailError .= "Enter a valid phone number as well";
+    } else if ((preg_match('#[0-9]#', $username)) && (($phone_len > 15) || (!is_numeric($phone)))) {
+        $emailError = "Enter aa valid nameshould not contain number";
+        $emailError .= "Enter a valid phone number as well";
+    } else if (($phone_len > 15) || (!is_numeric($phone))) {
+        $telError = "Enter a valid phone number";
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailError = "Please enter an appropriate mail  ";
     } else if (preg_match('#[0-9]#', $username)) {
         $nameError = "Invalid name, username should not contain number.";
@@ -148,8 +138,6 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
         }
     }
 }
-
-
 mysqli_close($conn);
 ?>
 

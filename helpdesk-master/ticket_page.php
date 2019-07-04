@@ -11,45 +11,35 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-                
-               // if(!isset($_SESSION)) uncoment when login and sign on pages are done
-                //{
-                //    session_start();
-               // }
-                
-                $DBConnect = mysqli_connect("localhost", "root", "");
-                if ($DBConnect === FALSE)
-                {
-                    echo "<p>Unable to connect to the database server.</p>"
-                    . "<p>Error code " . mysqli_errno() . ": " . mysqli_error()
-                    . "</p>";
-                }
-                
-                else {$DBName = "stenden_helpdesk"; 
-                if(!mysqli_select_db ($DBConnect, $DBName))
-                {
-                  echo "<p>Connection to the database failed.</p>";
-                }
-                
-                else {$TableName = "incident";
+        // if(!isset($_SESSION)) uncoment when login and sign on pages are done
+        //{
+        //    session_start();
+        // }
+
+        $DBConnect = mysqli_connect("localhost", "root", "");
+        if ($DBConnect === FALSE) {
+            echo "<p>Unable to connect to the database server.</p>"
+            . "<p>Error code " . mysqli_errno() . ": " . mysqli_error()
+            . "</p>";
+        } else {
+            $DBName = "stenden_helpdesk";
+            if (!mysqli_select_db($DBConnect, $DBName)) {
+                echo "<p>Connection to the database failed.</p>";
+            } else {
+                $TableName = "incident";
                 //$customerID = $_SESSION['cus_id'];
                 // $incidentId = 7;
-                $SQLstring ="SELECT * FROM incident";
-                if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) 
-                {
+                $SQLstring = "SELECT * FROM incident";
+                if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) {
                     // mysqli_stmt_bind_param($stmt, 's', $incidentId);
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $ticketNumber, $statusId, $SolId, $ContID, $OperatorId, $Date ,$Descriprion);
+                    mysqli_stmt_bind_result($stmt, $ticketNumber, $statusId, $SolId, $ContID, $OperatorId, $Date, $Descriprion);
                     mysqli_stmt_store_result($stmt);
-                
-                    if (mysqli_stmt_num_rows($stmt) == 0) 
-                    {
 
-                         echo "<p>You haven't submitted any tickets!</p>";
-                   }
+                    if (mysqli_stmt_num_rows($stmt) == 0) {
 
-                   else 
-                       {
+                        echo "<p>You haven't submitted any tickets!</p>";
+                    } else {
 
                         echo "<h1>Tickets overview:</h1>";
                         echo "<table border=1px solid black>";
@@ -61,29 +51,28 @@ and open the template in the editor.
                           <th>Date</th>
                           <th>Description</th></tr>";
                         while (mysqli_stmt_fetch($stmt)) {
-                        echo "<tr><td><center>".$ticketNumber."</center></td>";
-                        echo "<td><center>".$statusId."</center></td>";
-                        echo "<td><center>".$SolId."</center></td>";
-                        echo "<td><center>".$ContID."</center></td>";
-                        echo "<td><center>".$OperatorId."</center></td>";
-                        echo "<td><center>".$Date."</center></td>";
-                        echo "<td><center>".$Descriprion."</center></td>";
-                        echo "<td><a href=edit.php?id=$ticketNumber>Edit</a></td>";
-                        echo "<td><a href=delete.php?class=$ticketNumber>Delete </a></td>";
-                        
+                            echo "<tr><td><center>" . $ticketNumber . "</center></td>";
+                            echo "<td><center>" . $statusId . "</center></td>";
+                            echo "<td><center>" . $SolId . "</center></td>";
+                            echo "<td><center>" . $ContID . "</center></td>";
+                            echo "<td><center>" . $OperatorId . "</center></td>";
+                            echo "<td><center>" . $Date . "</center></td>";
+                            echo "<td><center>" . $Descriprion . "</center></td>";
+                            echo "<td><a href=edit.php?id=$ticketNumber>Edit</a></td>";
+                            echo "<td><a href=delete.php?class=$ticketNumber>Delete </a></td>";
                         }
-                        echo '</table>'; 
-                        }
-                        mysqli_stmt_close($stmt);
+                        echo '</table>';
+                    }
+                    mysqli_stmt_close($stmt);
                 }
-                    } 
-                    
-                    mysqli_close($DBConnect);
-                }
-                 echo "";
-                ?>
+            }
+
+            mysqli_close($DBConnect);
+        }
+        echo "";
+        ?>
     </body>
-     <?php
+        <?php
         // include"delete.php";   
-     ?>
+        ?>
 </html>

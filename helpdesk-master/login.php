@@ -12,9 +12,7 @@ session_start();
         <link rel="stylesheet" href="fonts/fonts.css">
         <link rel="stylesheet" href="css/loginsystem.css">
     </head>
-
     <body>
-
         <?php include_once 'includes/header.php'; ?>
         <?php include "includes/login.php"; ?>
         <div class="form-div-login">
@@ -35,5 +33,4 @@ session_start();
         </div>
         <?php include_once 'includes/footer.php'; ?>
     </body>
-
 </html>
