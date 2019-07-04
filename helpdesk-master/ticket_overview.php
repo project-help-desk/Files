@@ -49,11 +49,10 @@
                         if (!$connection) {
                             die("Connection to the database not succeeded " . mysqli_error($connection));
                         }
-                        $query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description,solution.Solution_id,solution.Description,contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
+                        $query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description, contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
                             FROM incident 
                             LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id 
-                            LEFT JOIN type ON type.type_id = incident.type_id 
-                            LEFT JOIN solution ON solution.Solution_id = incident.Solution_id 
+                            LEFT JOIN type ON type.type_id = incident.type_id
                             LEFT JOIN contact ON contact.Contact_id = incident.Contact_id 
                             LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                             ";
@@ -67,7 +66,7 @@
                         } else {
                             die(mysqli_error($connection));
                         }
-                        mysqli_stmt_bind_result($statement, $Incident, $statusID, $Solution, $Contact, $Operator, $DateTime, $Description, $Type, $isID, $isDesc, $typeId, $typeDesc, $solutionID, $solutionDesc, $contactID, $contactFirst, $contactLast, $operatorID, $operatorFirst, $operatorLast);
+                        mysqli_stmt_bind_result($statement, $Incident, $statusID, $Solution, $Contact, $Operator, $DateTime, $Description, $Type, $isID, $isDesc, $typeId, $typeDesc, $contactID, $contactFirst, $contactLast, $operatorID, $operatorFirst, $operatorLast);
                         mysqli_stmt_store_result($statement);
                         if (mysqli_stmt_num_rows($statement) > 0) {
                             echo "<table>";

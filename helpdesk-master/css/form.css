@@ -1,11 +1,11 @@
 
 #boxing {
-
-	margin: 75px auto;
+    margin: 75px auto;
     width: 400px;
     height: 410px;
     background-color: white;
     margin-bottom: 75px;
+    border-radius: 10px;
 }
 .push {
 	padding-left: 50px;
