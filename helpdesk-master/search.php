@@ -96,11 +96,7 @@
                     </tr>
                 </table>
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
-
-                if (mysqli_connect_errno()) {
-                    echo "Failed to connect: " . mysqli_connect_error();
-                }
+                include_once 'includes/header.php';
                 error_reporting(0);
                 $output = '';
                 if (isset($_POST['query']) && $_POST['query'] !== ' ') {

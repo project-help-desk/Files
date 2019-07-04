@@ -1,9 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "stenden_helpdesk");
-if (!$conn) {
-    echo "Connection to the server  not established";
-}
+include_once 'includes/header.php';
 
 if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
     $firstname = htmlentities($_POST["firstname"]);

@@ -16,21 +16,12 @@ and open the template in the editor.
         //    session_start();
         // }
 
-        $DBConnect = mysqli_connect("localhost", "root", "");
-        if ($DBConnect === FALSE) {
-            echo "<p>Unable to connect to the database server.</p>"
-            . "<p>Error code " . mysqli_errno() . ": " . mysqli_error()
-            . "</p>";
-        } else {
-            $DBName = "stenden_helpdesk";
-            if (!mysqli_select_db($DBConnect, $DBName)) {
-                echo "<p>Connection to the database failed.</p>";
-            } else {
+        include_once 'includes/header.php';
                 $TableName = "incident";
                 //$customerID = $_SESSION['cus_id'];
                 // $incidentId = 7;
                 $SQLstring = "SELECT * FROM incident";
-                if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) {
+                if ($stmt = mysqli_prepare($conn, $SQLstring)) {
                     // mysqli_stmt_bind_param($stmt, 's', $incidentId);
                     mysqli_stmt_execute($stmt);
                     mysqli_stmt_bind_result($stmt, $ticketNumber, $statusId, $SolId, $ContID, $OperatorId, $Date, $Descriprion);
@@ -64,10 +55,10 @@ and open the template in the editor.
                         echo '</table>';
                     }
                     mysqli_stmt_close($stmt);
-                }
-            }
+                
+            
 
-            mysqli_close($DBConnect);
+            mysqli_close($conn);
         }
         echo "";
         ?>

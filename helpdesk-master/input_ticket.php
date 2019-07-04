@@ -26,10 +26,7 @@ and open the template in the editor.
             $username = "root";
             $password = "";
             $databasename = "stenden_helpdesk";
-            $conn = mysqli_connect($servername, $username, $password, $databasename);
-            if (!$conn) {
-                die('Connection failed: ' . mysqli_connect_error());
-            }
+            include_once 'includes/header.php';
             if (isset($_SESSION['valid_id'])) {
                 if ($_SESSION['valid_id'] > 0) {
                     echo'<div class="error">';
