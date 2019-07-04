@@ -25,9 +25,8 @@
         </style>
     </head>
     <body>
-        <?php include_once 'includes/header.php'; ?>
-        <?php
-        include_once 'includes/header.php';
+        <?php include_once 'includes/header.php';
+        include_once 'includes/dbh-inc.php';
         if (isset($_POST['update'])) {
             $query = "UPDATE incident SET Description =? WHERE incident_id=?";
             $description = filter_var($_POST["description"], FILTER_SANITIZE_STRING);

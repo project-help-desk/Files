@@ -17,6 +17,7 @@ and open the template in the editor.
         // }
 
         include_once 'includes/header.php';
+        include_once 'includes/dbh-inc.php';
                 $TableName = "incident";
                 //$customerID = $_SESSION['cus_id'];
                 // $incidentId = 7;

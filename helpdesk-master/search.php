@@ -96,7 +96,7 @@
                     </tr>
                 </table>
                 <?php
-                include_once 'includes/header.php';
+                include_once 'includes/dbh-inc.php';
                 error_reporting(0);
                 $output = '';
                 if (isset($_POST['query']) && $_POST['query'] !== ' ') {

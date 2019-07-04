@@ -1,7 +1,6 @@
 <?php
 
-include_once 'includes/header.php';
-
+include_once 'includes/dbh-inc.php';
 if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
     $firstname = htmlentities($_POST["firstname"]);
     $lastname = htmlentities($_POST["lastname"]);

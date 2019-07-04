@@ -13,7 +13,7 @@
         <?php
         if (isset($_SESSION['valid_id'])) {
             if ($_SESSION['perm_level'] > 1) {
-                include_once 'includes/header.php';
+                include_once 'includes/dbh-inc.php';
                 //add solution
                 if (isset($_POST['solution'])) {
                     $solution = $_POST['solution'];

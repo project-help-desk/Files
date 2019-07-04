@@ -45,7 +45,7 @@
                         echo 'Number of incidents this year&nbsp;&nbsp;&nbsp;&nbsp;: ' . $yearcount;
                         echo '</fieldset><br><br><br>';
 
-                        include_once 'includes/header.php';
+                        include_once 'includes/dbh-inc.php';
                         $query_select = "SELECT incident.Incident_id, incident.Status_id, incident.Solution, incident.Contact_id, incident.Operator_id, incident.Date_time, incident.Description, incident.type_id, incident_status.Status_id, incident_status.Description,type.type_id,type.type_description, contact.Contact_id, contact.First_name, contact.Last_name, operator.Operator_id, operator.First_name, operator.Last_name 
                             FROM incident 
                             LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id 
