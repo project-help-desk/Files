@@ -39,7 +39,7 @@ and open the template in the editor.
                 } else {
                     $user_id = $_SESSION['valid_id'];
                     $TableName = "incident";
-                    $SQLstring = "SELECT incident.Incident_id, incident.Date_time, incident.Description, incident_status.status_id, incident_status.Description, type.type_description, incident.solution, operator.First_name, operator.Last_name FROM incident LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id LEFT JOIN type ON type.type_id = incident.type_id LEFT JOIN solution ON solution.Solution_id = incident.Solution_id LEFT JOIN contact ON contact.Contact_id = incident.Contact_id LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
+                    $SQLstring = "SELECT incident.Incident_id, incident.Date_time, incident.Description, incident_status.status_id, incident_status.Description, type.type_description, incident.solution, operator.First_name, operator.Last_name FROM incident LEFT JOIN incident_status ON incident_status.Status_id = incident.Status_id LEFT JOIN type ON type.type_id = incident.type_id LEFT JOIN contact ON contact.Contact_id = incident.Contact_id LEFT JOIN operator ON operator.Operator_id = incident.Operator_id
                     WHERE Incident.contact_id = ?";
                     if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) {
                         mysqli_stmt_bind_param($stmt, 's', $user_id);
