@@ -23,7 +23,7 @@
             if ($stmt = mysqli_prepare($conn, $query)) {
                 mysqli_stmt_bind_param($stmt, "si", $description, $_GET["id"]);
                 if (mysqli_stmt_execute($stmt)) {
-                    echo "Update Successful";
+                    echo "<span>Update Successful, you will be redirected to the ticket overview.</span>";
                     echo "<br>";
                     header("Refresh: 5; URL=UserTickets.php");
                 } else {
