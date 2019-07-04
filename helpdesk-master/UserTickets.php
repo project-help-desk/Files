@@ -26,7 +26,6 @@ and open the template in the editor.
             //{
             //    session_start();
             // }
-            echo '<a href="input_ticket.php">input new ticket</a>';
             $DBConnect = mysqli_connect("localhost", "root", "");
             if ($DBConnect === FALSE) {
                 echo "<p>Unable to connect to the database server.</p>"
@@ -84,7 +83,7 @@ and open the template in the editor.
                 }
                 mysqli_close($DBConnect);
             }
-            echo "";
+            echo "<a href=\"input_ticket.php\" class=\"button\">Add new ticket</a>";
             ?>
         </div>
         <footer>
