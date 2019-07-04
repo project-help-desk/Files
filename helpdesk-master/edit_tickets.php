@@ -9,20 +9,6 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="fonts/fonts.css">
         <link rel="stylesheet" href="css/usertickets.css">
-        <style type="text/css">
-            input[type=text]
-            {
-                height: 30px;
-            }
-            input[type=submit]
-            {
-                width: 70px;
-                border:none;
-                background-color: #5bbc2e;
-                cursor: pointer;
-                color:white;
-            }
-        </style>
     </head>
     <body>
         <?php include_once 'includes/header.php'; ?>
@@ -67,8 +53,8 @@
         ?>
         <form action="" method="POST">
             <h2>Edit ticket Description</h2>	
-            <p><input type="text" name="description" value="<?php echo $description ?>"></p>
-            <p><input type="submit"name="update" value="Update"></p>
+            <textarea name="description" rows="4" cols="30"><?php echo $description ?></textarea>
+            <p><input type="submit" name="update" value="Update"></p>
         </form>
     </body>
 </html>
