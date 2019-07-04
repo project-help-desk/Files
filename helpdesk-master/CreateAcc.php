@@ -133,12 +133,12 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
                     if (mysqli_stmt_execute($stmt)) {
                         mysqli_stmt_bind_result($stmt, $contact_id, $perm_level);
                         mysqli_stmt_store_result($stmt);
-                        echo "<span>Accound successfully created!</span><br>
-                        <span>Redirecting you back to the homepage...</span>";
+                        echo "<h2 style=text-align:center;>Account successfully created!</h2>
+                        <p style=text-align:center;>Redirecting to the login page...</p>";
                         $_SESSION["valid_id"] = $contact_id;
                         $_SESSION["valid_name"] = $username;
                         $_SESSION["perm_level"] = $perm_level;
-                        header("Location: index.php");
+                         header("Refresh: 7; URL=login.php");
                     }
                 }
             } else {
