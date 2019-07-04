@@ -1,11 +1,12 @@
 .form-div
 {
-    margin: 150px auto;
+    margin: 0px auto;
+    margin-top:70px;
     width: 440px;
-    height: 700px;
+    height: auto;
     background-color: white;
-    margin-bottom: 265px;
-
+    margin-bottom:128px;
+    border-radius: 10px;
 }
 
 .form-style
@@ -21,7 +22,7 @@
     height: 340px;
     background-color: white;
     margin-bottom: 265px;
-
+    border-radius: 10px;
 }
 .form-style-login
 {
