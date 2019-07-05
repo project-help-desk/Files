@@ -30,6 +30,7 @@
             height: 850px;
             padding-top: 50px;
         }
+        
     </style>
     <body>
         <?php include_once 'includes/header.php'; ?>
