@@ -22,7 +22,7 @@
                 if (mysqli_stmt_execute($stmt)) {
                     echo "<span>Update Successful, you will be redirected to the ticket overview.</span>";
                     echo "<br>";
-                    header("Refresh: 5; URL=UserTickets.php");
+                    header("Refresh: 3; URL=UserTickets.php");
                 } else {
                     echo "Unable to Update " . mysqli_error($conn);
                 }

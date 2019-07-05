@@ -124,7 +124,7 @@ if (isset($_POST["submitAcc"]) || isset($_POST["submitComp"])) {
                         $_SESSION["valid_id"] = $contact_id;
                         $_SESSION["valid_name"] = $username;
                         $_SESSION["perm_level"] = $perm_level;
-                         header("Refresh: 7; URL=login.php");
+                         header("Refresh: 5; URL=login.php");
                     }
                 }
             } else {
